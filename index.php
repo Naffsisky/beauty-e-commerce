@@ -136,7 +136,7 @@
           </li>
           <!-- Sign out -->
           <li class="nav-item">
-            <a class="nav-link" href="logout.html">
+            <a class="nav-link" href="./pages/login/logout.php">
               <i class="fas fa-sign-out-alt"></i>
             </a>
           </li>

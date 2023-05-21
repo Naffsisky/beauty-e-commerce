@@ -17,10 +17,10 @@ function query($query){
 
 function register($data){
     global $conn;
-    $nama = htmlspecialchars($conn, $data["nama"]);
+    $nama = htmlspecialchars($data["nama"]);
     $username = strtolower(stripslashes($data["username"]));
     $email = htmlspecialchars(stripslashes($data["email"]));
-    $role = htmlspecialchars($conn, $data["kode"]);
+    $role = htmlspecialchars($data["kode"]);
     $password = mysqli_real_escape_string($conn, $data["password"]);
     $password2 = mysqli_real_escape_string($conn, $data["password2"]);
 

@@ -1,3 +1,25 @@
+<?php
+
+$error = '';
+
+require './functions.php';
+
+if(isset($_POST["login"])){
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $result = mysqli_query($conn, "SELECT * FROM mimin WHERE username = '$username'");
+    if(mysqli_num_rows($result) === 1){
+        $row = mysqli_fetch_assoc($result);
+        if(password_verify($password, $row["password"])){
+            header("Location: ../../index.html");
+            exit;
+        }
+    }
+    $error = true;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,9 +55,9 @@
         <div class="card-body">
           <p class="login-box-msg">Silahkan Masukan Akun Admin.</p>
 
-          <form action="../../index.html" method="post">
+          <form action="" method="post">
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Username" />
+              <input type="text" class="form-control" placeholder="Username" name="username" id="username" />
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -46,7 +68,7 @@
               <input
                 type="password"
                 class="form-control"
-                placeholder="Password"
+                placeholder="Password" name="password" id="password"
               />
               <div class="input-group-append">
                 <div class="input-group-text">
@@ -63,7 +85,7 @@
               </div>
               <!-- /.col -->
               <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block">
+                <button type="submit" class="btn btn-primary btn-block" name="login">
                   Sign In
                 </button>
               </div>
@@ -83,11 +105,11 @@
           <!-- /.social-auth-links -->
 
           <p class="mb-1">
-            <a href="forgot.html">Lupa Password?</a>
+            <a href="./forgot.html">Lupa Password?</a>
           </p>
           <p class="mb-0">
             <span>Belum punya akun?</span>
-            <a href="register.html" class="text-center">Buat Akun!</a>
+            <a href="./register.html" class="text-center">Buat Akun!</a>
           </p>
         </div>
         <!-- /.card-body -->
