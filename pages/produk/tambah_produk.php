@@ -1,21 +1,23 @@
 <?php 
-require 'function.php';
+require './function.php';
 
 if(isset($_POST["submit"])){
-    
-    if(tambah($_POST)>0){
+    if(tambah($_POST) > 0){
         echo "
         <script>
         alert('Data berhasil ditambahkan!');
         document.location.href = 'index.php';
         </script>";
     } else {
-        echo "
-        <script>('Data gagal ditambahkan!');
-        document.location.href = 'index.php';
-        </script>";
+        // echo "
+        // <script>('Data gagal ditambahkan!');
+        // document.location.href = 'index.php';
+        // </script>";
     }
     
+}
+if (!$result){
+    echo mysqli_error($conn);
 }
 ?>
 <!DOCTYPE html>
@@ -56,39 +58,40 @@ if(isset($_POST["submit"])){
                 color: #fff;
                 padding: 10px;
                 font-size: 12px;
-                border: 0;
+                border: 0px;
                 margin-top: 20px;
+                border-radius: 5px;
             }
         </style>
     </head>
     <body>
-        <center><h1>Tambah Produk</h1></center>
-        <form action="" method="POST" enctype="multipart/form-data"></form>
-        <section class="base">
-            <div>
-                <label for="kode_produk">Kode Produk</label>
-                <input type="text" name="kode_produk" id="kode_produk" required>
-            </div>
-            <div>
-                <label for="nama">Nama Produk</label>
-                <input type="text" name="nama" id="nama" required>
-            </div>
-            <div>
-                <label for="stok">Stok</label>
-                <input type="number" name="stok" id="stok" required>
-            </div>
-            <div>
-                <label for="harga">Harga</label>
-                <input type="number" name="harga" id="harga" required>
-            </div>
-            <div>
-                <label for="gambar">Gambar Produk</label>
-                <input type="file" name="gambar" id="gambar" required>
-            </div>
-            <div>
-                <button type="submit" name="submit">Tambah Produk</button>
-            </div>
-        </section>
+        <center>
+            <h1>Tambah Produk</h1>
+        </center>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <section class="base">
+                <div>
+                    <label for="kode_produk">Kode Produk</label>
+                    <input type="text" name="kode_produk" id="kode_produk" required>
+                </div>
+                <div>
+                    <label for="nama">Nama Produk</label>
+                    <input type="text" name="nama" id="nama" required>
+                </div>
+                <div>
+                    <label for="stok">Stok</label>
+                    <input type="number" name="stok" id="stok" required>
+                </div>
+                <div>
+                    <label for="harga">Harga</label>
+                    <input type="number" name="harga" id="harga" required>
+                </div>
+                    <label for="gambar">Gambar Produk</label>
+                    <input type="file" name="gambar" id="gambar" required>
+                <div>
+                    <button type="submit" name="submit">Tambah Produk</button>
+                </div>
+            </section>
         </form>
     </body>
 </html>

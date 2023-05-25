@@ -1,9 +1,13 @@
 <?php 
-$conn = mysqli_connect("localhost","root","","beautyku");
+$conn = mysqli_connect("localhost", "root", "", "beau");
+
+if (!$result){
+    echo mysqli_error($conn);
+}
 
 function query($query){
     global $conn;
-    $result = mysqli_query($conn,$query);
+    $result = mysqli_query($conn, $query);
     $rows = [];
     while($row = mysqli_fetch_assoc($result)){
         $rows[] = $row;
@@ -18,8 +22,10 @@ function tambah($data){
     $nama = htmlspecialchars($data["nama"]);
     $stok = htmlspecialchars($data["stok"]);
     $harga = htmlspecialchars($data["harga"]);
-
+    var_dump($nama);
+    var_dump($harga);
     $gambar = upload();
+    var_dump($gambar);
     if(!$gambar){
         return false;
     }
@@ -36,7 +42,7 @@ function upload(){
     $error = $_FILES['gambar']['error'];
     $tmpName = $_FILES['gambar']['tmp_name'];
 
-    if($error===4){
+    if($error === 4){
         echo "<script>
         alert('pilih gambar terlebih dahulu!');
         </script>";
@@ -44,13 +50,14 @@ function upload(){
     }
 
     //cek yang diupload berupa gambar
-    $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+    $ekstensiGambarValid = ['jpg', 'jpeg', 'png', 'heic'];
     $ekstensiGambar = explode('.', $namaFile);
     $ekstensiGambar = strtolower(end($ekstensiGambar));
     if(!in_array($ekstensiGambar,$ekstensiGambarValid)){
-        echo "<script>
-        alert('yang Anda upload bukan gambar!');
-        </script>";
+        var_dump($ekstensiGambar);
+        // echo "<script>
+        // alert('yang Anda upload bukan gambar!');
+        // </script>";
         return false;
     }
 
@@ -67,11 +74,13 @@ function upload(){
     $namaFileBaru = uniqid();
     $namaFileBaru .= '.';
     $namaFileBaru .= $ekstensiGambar;
-    move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
+    $destinationFile = './img/';
+
+    move_uploaded_file($tmpName, $destinationFile . $namaFileBaru);
 
     return $namaFileBaru;
-
 }
+
 function hapus($id){
     global $conn;
     mysqli_query($conn, "DELETE FROM produk WHERE id = $id");
