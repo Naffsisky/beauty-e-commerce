@@ -86,8 +86,10 @@ if (!$result){
                     <label for="harga">Harga</label>
                     <input type="number" name="harga" id="harga" required>
                 </div>
+                <div>
                     <label for="gambar">Gambar Produk</label>
                     <input type="file" name="gambar" id="gambar" required>
+                </div>
                 <div>
                     <button type="submit" name="submit">Tambah Produk</button>
                 </div>

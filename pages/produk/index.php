@@ -1,4 +1,6 @@
-<?php require 'function.php';
+<?php 
+require 'function.php';
+
 $produk = query("SELECT * FROM produk");
 
 if(isset($_POST["cari"])){
@@ -49,11 +51,11 @@ if(isset($_POST["cari"])){
     </Head>
     <body>
         <center><h1>Data Produk</h1></center>
-        <center><a href="tambah_produk.php">+ &nbsp; Tambah Produk</a></center>
+        <center><a href="tambah.php">+ &nbsp; Tambah Produk</a></center>
         <br>
         <center>
         <form action="" method="post">
-            <input type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
+            <input type="text" name="keyword" size="40" autofocus placeholder="Masukkan keyword pencarian..." autocomplete="off">
             <button type="submit" name="cari">Cari!</button>
         </form>
         </center>

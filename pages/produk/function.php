@@ -22,22 +22,20 @@ function tambah($data){
     $nama = htmlspecialchars($data["nama"]);
     $stok = htmlspecialchars($data["stok"]);
     $harga = htmlspecialchars($data["harga"]);
-    var_dump($nama);
-    var_dump($harga);
     $gambar = upload();
     var_dump($gambar);
     if(!$gambar){
         return false;
     }
 
-    $query = "INSERT INTO produk VALUES('','$kode_produk','$nama','$stok','$harga','$gambar')";
+    $query = "INSERT INTO produk VALUES(NULL,'$kode_produk','$nama','$stok','$harga','$gambar')";
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
 }
 
 function upload(){
-    $namaFile = $_FILES['gambar']['nama'];
+    $namaFile = $_FILES['gambar']['name'];
     $ukuranFile = $_FILES['gambar']['size'];
     $error = $_FILES['gambar']['error'];
     $tmpName = $_FILES['gambar']['tmp_name'];
@@ -54,10 +52,9 @@ function upload(){
     $ekstensiGambar = explode('.', $namaFile);
     $ekstensiGambar = strtolower(end($ekstensiGambar));
     if(!in_array($ekstensiGambar,$ekstensiGambarValid)){
-        var_dump($ekstensiGambar);
-        // echo "<script>
-        // alert('yang Anda upload bukan gambar!');
-        // </script>";
+        echo "<script>
+        alert('yang Anda upload bukan gambar!');
+        </script>";
         return false;
     }
 
@@ -83,8 +80,14 @@ function upload(){
 
 function hapus($id){
     global $conn;
+    $result = mysqli_query($conn, "SELECT gambar FROM produk WHERE id = $id");
+    $file = mysqli_fetch_assoc($result);
+    $fileName = implode('.', $file);
+    $location = "./img/$fileName";
+    if (file_exists($location)) {
+        unlink('./img/' . $fileName);
+    }
     mysqli_query($conn, "DELETE FROM produk WHERE id = $id");
-
     return mysqli_affected_rows($conn);
 }
 
