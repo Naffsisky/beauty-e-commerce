@@ -17,7 +17,9 @@ if(isset($_POST["submit"])){
         document.location.href = 'index.php';
         </script>";
     }
-    
+}
+if (!$result){
+    echo mysqli_error($conn);
 }
 ?>
 <!DOCTYPE html>
@@ -58,42 +60,45 @@ if(isset($_POST["submit"])){
                 color: #fff;
                 padding: 10px;
                 font-size: 12px;
-                border: 0;
+                border: 0px;
                 margin-top: 20px;
                 border-radius: 5px;
             }
         </style>
     </head>
     <body>
-        <center><h1>Ubah Data Produk</h1></center>
-        <form action="" method="POST">
-        <input type="hidden" name="id" value="<?=$produk["id"];?>"> </input>
-        <section class="base">
-            <div>
-                <label for="kode_produk">Kode Produk</label>
-                <input type="text" name="kode_produk" id="kode_produk" required value="<?= $produk["kode_produk"]; ?>">
-            </div>
-            <div>
-                <label for="nama">Nama Produk</label>
-                <input type="text" name="nama" id="nama" required value="<?= $produk["nama"]; ?>">
-            </div>
-            <div>
-                <label for="stok">Stok</label>
-                <input type="number" name="stok" id="stok" required value="<?= $produk["stok"]; ?>">
-            </div>
-            <div>
-                <label for="harga">Harga</label>
-                <input type="number" name="harga" id="harga" required value="<?= $produk["harga"]; ?>">
-            </div>
-            <div style="text-align: center">
-                <label for="gambar">Gambar Produk</label>
-                <img src="img/<?= $produk["gambar"]; ?>" width="70">
-                <input type="file" name="gambar" id="gambar" value="<?= $produk["gambar"]; ?>">
-            </div>
-            <div>
-                <button type="submit" name="submit">Ubah Data</button>
-            </div>
-        </section>
+        <center>
+            <h1>Ubah Data Produk</h1>
+        </center>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?=$produk["id"];?>">
+            <input type="hidden" name="gambarLama" value="<?= $produk["gambar"]; ?>">
+            <section class="base" style="border-radius: 10px;">
+                <div>
+                    <label for="kode_produk">Kode Produk</label>
+                    <input type="text" name="kode_produk" id="kode_produk" required value="<?= $produk["kode_produk"]; ?>">
+                </div>
+                <div>
+                    <label for="nama">Nama Produk</label>
+                    <input type="text" name="nama" id="nama" required value="<?= $produk["nama"]; ?>">
+                </div>
+                <div>
+                    <label for="stok">Stok</label>
+                    <input type="number" name="stok" id="stok" required value="<?= $produk["stok"]; ?>">
+                </div>
+                <div>
+                    <label for="harga">Harga</label>
+                    <input type="number" name="harga" id="harga" required value="<?= $produk["harga"]; ?>">
+                </div>
+                <div style="text-align: center">
+                    <label for="gambar">Gambar Produk</label>
+                    <img src="img/<?= $produk["gambar"]; ?>" width="70">
+                    <input type="file" name="gambar" id="gambar" value="<?= $produk["gambar"]; ?>">
+                </div>
+                <div>
+                    <button type="submit" name="submit" onclick="return confirm('Apakah data yang anda masukan sudah benar?')";>Ubah Data</button>
+                </div>
+            </section>
         </form>
     </body>
 </html>

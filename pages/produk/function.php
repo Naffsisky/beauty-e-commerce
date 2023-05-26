@@ -104,6 +104,17 @@ function ubah($data){
     $stok = htmlspecialchars($data["stok"]);
     $harga = htmlspecialchars($data["harga"]);
     $gambar = htmlspecialchars($data["gambar"]);
+    $gambarLama = ($data["gambarLama"]);
+
+    if ($_FILES['gambar']['error'] === 4){
+        $gambar = $gambarLama;
+    } else {
+        $result = mysqli_query($conn, "SELECT gambar FROM produk WHERE id = $id");
+        $file = mysqli_fetch_assoc($result);
+        $fileName = implode('.', $file);
+        unlink('img/' . $fileName);
+        $gambar = upload();
+    }
 
     $query = "UPDATE produk SET
         kode_produk = '$kode_produk',
@@ -114,7 +125,6 @@ function ubah($data){
     WHERE id = $id";
     
     mysqli_query($conn, $query);
-
     return mysqli_affected_rows($conn);
 }
 
