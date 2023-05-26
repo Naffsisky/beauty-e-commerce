@@ -1,5 +1,5 @@
 <?php 
-$conn = mysqli_connect("localhost", "root", "", "beau");
+$conn = mysqli_connect("localhost", "root", "", "beautyku");
 
 if (!$result){
     echo mysqli_error($conn);
@@ -18,17 +18,20 @@ function query($query){
 function tambah($data){
     global $conn;
 
+    $eksternal_id = uniqid() . mt_rand();
+    $eksternal_id = preg_replace("/[^0-9]/", "", $eksternal_id);
+
     $kode_produk = htmlspecialchars($data["kode_produk"]);
     $nama = htmlspecialchars($data["nama"]);
     $stok = htmlspecialchars($data["stok"]);
     $harga = htmlspecialchars($data["harga"]);
     $gambar = upload();
-    var_dump($gambar);
+
     if(!$gambar){
         return false;
     }
 
-    $query = "INSERT INTO produk VALUES(NULL,'$kode_produk','$nama','$stok','$harga','$gambar')";
+    $query = "INSERT INTO produk VALUES(NULL, '$eksternal_id','$kode_produk','$nama','$stok','$harga','$gambar')";
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);
@@ -78,16 +81,17 @@ function upload(){
     return $namaFileBaru;
 }
 
-function hapus($id){
+function hapus($eksternal_id){
     global $conn;
-    $result = mysqli_query($conn, "SELECT gambar FROM produk WHERE id = $id");
+    $result = mysqli_query($conn, "SELECT gambar FROM produk WHERE eksternal_id = $eksternal_id");
     $file = mysqli_fetch_assoc($result);
     $fileName = implode('.', $file);
     $location = "./img/$fileName";
     if (file_exists($location)) {
         unlink('./img/' . $fileName);
     }
-    mysqli_query($conn, "DELETE FROM produk WHERE id = $id");
+    mysqli_query($conn, "DELETE FROM produk WHERE eksternal_id = $eksternal_id");
+
     return mysqli_affected_rows($conn);
 }
 

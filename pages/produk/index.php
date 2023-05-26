@@ -6,6 +6,9 @@ $produk = query("SELECT * FROM produk");
 if(isset($_POST["cari"])){
     $produk = cari($_POST["keyword"]);
 }
+if (isset($_POST["reset"])) {
+    $mahasiswa = query("SELECT * FROM produk");
+}
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +35,7 @@ if(isset($_POST["cari"])){
                 border: 1px solid #ddeeee;
                 color: #336b6b;
                 padding: 10px;
-                text-align: left;
+                text-align: center;
                 text-shadow: 1px 1px 1px #fff;
             }
             table tbody td{
@@ -46,6 +49,8 @@ if(isset($_POST["cari"])){
                 padding: 10px;
                 font-size: 12px;
                 text-decoration: none;
+                text-transform: uppercase;
+                border-radius: 5px;
             }
         </style>
     </Head>
@@ -57,6 +62,7 @@ if(isset($_POST["cari"])){
         <form action="" method="post">
             <input type="text" name="keyword" size="40" autofocus placeholder="Masukkan keyword pencarian..." autocomplete="off">
             <button type="submit" name="cari">Cari!</button>
+            <button type="submit" name="reset" id="tombol-reset">Reset</button>
         </form>
         </center>
         <table>
@@ -69,7 +75,7 @@ if(isset($_POST["cari"])){
                 <th>Gambar Produk</th>
                 <th>Aksi</th>
             </thead>
-            <tbody>
+            <tbody style="text-align: center;">
                 <?php $no = 1;?>
                 <?php foreach($produk as $row): ?>
                 <tr>
@@ -81,7 +87,7 @@ if(isset($_POST["cari"])){
                     <td><img src="img/<?= $row["gambar"]; ?>" width="50"></td>
                     <td>
                         <a href="ubah.php?id=<?= $row["id"];?>">Edit</a>
-                        <a href="hapus.php?id=<?= $row["id"];?>" onclick="return confirm('Anda yakin ingin hapus data ini?')">Hapus</a>
+                        <a href="hapus.php?id=<?= $row["eksternal_id"];?>" onclick="return confirm('Anda yakin ingin hapus data ini?')">Hapus</a>
                     </td>
                 </tr>
                 <?php $no++;?>

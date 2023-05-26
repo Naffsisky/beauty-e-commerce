@@ -1,8 +1,8 @@
 <?php 
 require 'function.php';
-$id = $_GET["id"];
-
-if(hapus($id) > 0){
+$eksternal_id = $_GET["id"];
+var_dump($eksternal_id);
+if(hapus($eksternal_id) > 0){
     echo "
     <script>
     alert('Data berhasil dihapus!');

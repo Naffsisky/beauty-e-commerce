@@ -1,8 +1,7 @@
 <?php 
 require 'function.php';
 
-$id = $_GET["id"]
-;
+$id = $_GET["id"];
 
 $produk = query("SELECT * FROM produk WHERE id = $id")[0];
 if(isset($_POST["submit"])){
@@ -61,13 +60,14 @@ if(isset($_POST["submit"])){
                 font-size: 12px;
                 border: 0;
                 margin-top: 20px;
+                border-radius: 5px;
             }
         </style>
     </head>
     <body>
         <center><h1>Ubah Data Produk</h1></center>
-        <form action="" method="POST"></form>
-        <Input type="hidden" name="id" value="<?=$produk["id"];?>"> </Input>
+        <form action="" method="POST">
+        <input type="hidden" name="id" value="<?=$produk["id"];?>"> </input>
         <section class="base">
             <div>
                 <label for="kode_produk">Kode Produk</label>
@@ -85,9 +85,10 @@ if(isset($_POST["submit"])){
                 <label for="harga">Harga</label>
                 <input type="number" name="harga" id="harga" required value="<?= $produk["harga"]; ?>">
             </div>
-            <div>
+            <div style="text-align: center">
                 <label for="gambar">Gambar Produk</label>
-                <input type="file" name="gambar" id="gambar" required value="<?= $produk["gambar"]; ?>">
+                <img src="img/<?= $produk["gambar"]; ?>" width="70">
+                <input type="file" name="gambar" id="gambar" value="<?= $produk["gambar"]; ?>">
             </div>
             <div>
                 <button type="submit" name="submit">Ubah Data</button>

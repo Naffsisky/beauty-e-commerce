@@ -281,7 +281,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/kanban.html" class="nav-link">
+                <a href="pages/produk/index.html" class="nav-link">
                   <i class="nav-icon fas fa-tags"></i>
                   <p>Produk</p>
                 </a>
@@ -307,7 +307,7 @@
               </li>
               <li class="nav-header">LOGOUT</li>
               <li class="nav-item">
-                <a href="iframe.html" class="nav-link">
+                <a href="./pages/login/logout.html" class="nav-link">
                   <i class="nav-icon fas fa-sign-out-alt"></i>
                   <p>Keluar</p>
                 </a>
