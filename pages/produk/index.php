@@ -84,7 +84,7 @@ if (isset($_POST["reset"])) {
                     <td><?= $row["nama"] ?></td>
                     <td><?= $row["stok"] ?></td>
                     <td>Rp. <?= number_format($row["harga"], 0, ',' , '.'); ?></td>
-                    <td><img src="img/<?= $row["gambar"]; ?>" width="50"></td>
+                    <td><img src="img/<?= $row["gambar"]; ?>" width="120"></td>
                     <td>
                         <a href="ubah.php?id=<?= $row["id"];?>">Edit</a>
                         <a href="hapus.php?id=<?= $row["eksternal_id"];?>" onclick="return confirm('Anda yakin ingin hapus data ini?')">Hapus</a>

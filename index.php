@@ -136,7 +136,7 @@
           </li>
           <!-- Sign out -->
           <li class="nav-item">
-            <a class="nav-link" href="./pages/login/logout.php">
+            <a class="nav-link" href="./pages/login/logout.html">
               <i class="fas fa-sign-out-alt"></i>
             </a>
           </li>
@@ -198,7 +198,7 @@
               </li>
               <li class="nav-header">PESANAN</li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a class="nav-link">
                   <i class="nav-icon fas fa-shopping-cart"></i>
                   <p>
                     Pesanan Sekarang
@@ -227,7 +227,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="./pages/history/" class="nav-link">
                   <i class="nav-icon fas fa-history"></i>
                   <p>
                     Riwayat Pesanan
@@ -236,7 +236,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./pages/review/index.html" class="nav-link">
+                <a href="./pages/review/" class="nav-link">
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
@@ -245,14 +245,14 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="./pages/report/" class="nav-link">
                   <i class="nav-icon fas fa-exclamation-circle"></i>
                   <p>Aduan Pembeli</p>
                 </a>
               </li>
               <li class="nav-header">PENJUALAN</li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a class="nav-link">
                   <i class="nav-icon fas fa-book-open"></i>
                   <p>
                     Katalog
@@ -261,19 +261,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <a href="./pages/katalog/skincare/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Skincare</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/compose.html" class="nav-link">
+                    <a href="./pages/katalog/bodycare/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Bodycare</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                    <a href="./pages/katalog/makeup/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Makeup</p>
                     </a>
@@ -281,14 +281,14 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/produk/index.html" class="nav-link">
+                <a href="pages/produk/" class="nav-link">
                   <i class="nav-icon fas fa-tags"></i>
                   <p>Produk</p>
                 </a>
               </li>
               <li class="nav-header">AKUN</li>
               <li class="nav-item">
-                <a href="pages/profile/index.html" class="nav-link">
+                <a href="pages/profile/" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>Profile</p>
                 </a>

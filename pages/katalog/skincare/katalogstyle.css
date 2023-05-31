@@ -1,14 +1,3 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
 .product-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -35,23 +24,6 @@ h1 {
   margin-bottom: 10px;
 }
 
-button.buy-button {
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button.buy-button:hover {
-  background-color: #2980b9;
-}
-
-
-.product-item .buy-button {
-  margin-top: 10px;
-}
  /* CSS untuk halaman keranjang (cart.php) */
  .cart-container {
   display: flex;
@@ -102,9 +74,4 @@ button.buy-button:hover {
 
 .cart-item button.remove-button:hover {
   background-color: #c0392b;
-}
-
-a{
-  text-decoration: none;
-  color: green;
 }

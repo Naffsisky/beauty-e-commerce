@@ -53,6 +53,14 @@ if (!$result){
                 border: 2px solid #ccc;
                 outline-color: #177090;
             }
+            select{
+                padding: 6px;
+                width: 100%;
+                box-sizing: border-box;
+                background-color: #f8f8f8;
+                border: 2px solid #ccc;
+                outline-color: #177090;
+            }
             button{
                 background-color: #177090;
                 color: #fff;
@@ -82,6 +90,12 @@ if (!$result){
                     <label for="stok">Stok</label>
                     <input type="number" name="stok" id="stok" required>
                 </div>
+                <div>
+                    <label for="stok">Kategori</label>
+                    <select class="form-select" aria-label="Default select example" name="agama" required>
+                        <option value="1">Makanan</option>
+                        <option value="2">Minuman</option>
+                    </select>
                 <div>
                     <label for="harga">Harga</label>
                     <input type="number" name="harga" id="harga" required>
