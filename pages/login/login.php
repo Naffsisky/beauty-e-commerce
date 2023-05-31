@@ -85,7 +85,7 @@ if(isset($_POST["login"])){
               </div>
               <!-- /.col -->
               <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block" name="login">
+                <button type="submit" class="btn btn-primary btn-block" name="login"><a href="../profile/index.php?id=<?= $row["id"]?>"></a>
                   Sign In
                 </button>
               </div>

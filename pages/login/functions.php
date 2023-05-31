@@ -47,11 +47,11 @@ function register($data){
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     if ($role == "4DM1N"){
-        mysqli_query($conn, "INSERT INTO mimin VALUES (NULL, '$nama', '$username', 'Admin', '$email', '$password')");
+        mysqli_query($conn, "INSERT INTO mimin VALUES (NULL, '$nama', '$username', 'Admin', '$email', '$password', NULL)");
     } elseif($role == "5T4FF"){
-        mysqli_query($conn, "INSERT INTO mimin VALUES (NULL, '$nama', '$username', 'Manager', '$email', '$password')");
+        mysqli_query($conn, "INSERT INTO mimin VALUES (NULL, '$nama', '$username', 'Manager', '$email', '$password', NULL)");
     } else {
-        mysqli_query($conn, "INSERT INTO mimin VALUES (NULL, '$nama', '$username', 'Pegawai', '$email', '$password')");
+        mysqli_query($conn, "INSERT INTO mimin VALUES (NULL, '$nama', '$username', 'Pegawai', '$email', '$password', NULL)");
     }
     return mysqli_affected_rows($conn);
 }

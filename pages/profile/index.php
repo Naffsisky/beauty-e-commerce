@@ -1,3 +1,16 @@
+<?php
+
+// require '../login/functions.php';
+// $id = $_GET["id"];
+
+// $admin = query("SELECT * FROM mimin WHERE id = $id")[0];
+
+// if (!$result){
+//   echo mysqli_error($conn);
+// }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +21,7 @@
     <!-- Google Font: Source Sans Pro -->
     <link
       rel="stylesheet"
-      href="../../https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
     />
     <!-- Font Awesome -->
     <link
@@ -18,7 +31,7 @@
     <!-- Ionicons -->
     <link
       rel="stylesheet"
-      href="../../https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
     />
     <!-- Tempusdominus Bootstrap 4 -->
     <link
@@ -50,12 +63,35 @@
       href="../../plugins/summernote/summernote-bs4.min.css"
     />
     <!-- Profile -->
-    <link rel="stylesheet" href="./style.css" />
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
+    <style>
+      .img-account-profile {
+        height: 10rem;
+      }
+      .rounded-circle {
+        border-radius: 50% !important;
+      }
+      .card {
+        box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+      }
+      .card .card-header {
+        font-weight: 500;
+      }
+      .card-header:first-child {
+        border-radius: 0.35rem 0.35rem 0 0;
+      }
+      .card-header {
+        padding: 1rem 1.35rem;
+        margin-bottom: 0;
+        background-color: rgba(33, 40, 50, 0.03);
+        border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+      }
+    </style>
   </head>
   <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
       <!-- Preloader -->
-      <div
+      <!-- <div
         class="preloader flex-column justify-content-center align-items-center"
       >
         <img
@@ -65,7 +101,7 @@
           height="60"
           width="60"
         />
-      </div>
+      </div> -->
 
       <!-- Navbar -->
       <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -202,7 +238,7 @@
                with font-awesome or any other icon font library -->
               <li class="nav-header">DASHBOARD</li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../../index.html" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>Dashboard</p>
                 </a>
@@ -356,6 +392,7 @@
 
         <!-- Main content -->
         <div class="container-xl px-4 mt-2">
+          <input type="hidden" id="id" value="<?= $admin['id']; ?>">
           <div class="row">
             <div class="container col-xl-4">
               <!-- Profile picture card-->
@@ -373,7 +410,8 @@
                     JPG or PNG no larger than 5 MB
                   </div>
                   <!-- Profile picture upload button-->
-                  <button class="btn btn-primary" type="button">
+                  <input type="file" id="profilePicInput" style="display: none;">
+                  <button class="btn btn-primary" type="button" id="profilePicButton">
                     Upload new image
                   </button>
                 </div>
@@ -428,7 +466,7 @@
                         />
                       </div>
                     </div>
-                    <!-- Form Row        -->
+                    <!-- Form Row -->
                     <div class="row gx-3 mb-3">
                       <!-- Form Group (organization name)-->
                       <div class="col-md-6">
@@ -501,7 +539,7 @@
                       </div>
                     </div>
                     <!-- Save changes button-->
-                    <button class="btn btn-primary" type="button">
+                    <button class="btn btn-primary" type="submit" name="submit">
                       Save changes
                     </button>
                   </form>
@@ -563,5 +601,17 @@
     <script src="../../dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="../../dist/js/pages/dashboard.js"></script>
+    <script>
+      // JavaScript
+      document.getElementById("profilePicButton").addEventListener("click", function() {
+        document.getElementById("profilePicInput").click();
+      });
+
+      document.getElementById("profilePicInput").addEventListener("change", function() {
+        var file = this.files[0];
+        // Lakukan apa pun yang Anda inginkan dengan file yang dipilih, misalnya mengunggahnya ke server
+        console.log("File yang dipilih:", file);
+      });
+      </script>
   </body>
 </html>

@@ -236,7 +236,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="./pages/review/index.html" class="nav-link">
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
@@ -288,7 +288,7 @@
               </li>
               <li class="nav-header">AKUN</li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="pages/profile/index.html" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>Profile</p>
                 </a>
