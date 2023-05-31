@@ -8,7 +8,7 @@ $produk = query("SELECT * FROM produk");
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Katalog Produk Skincare</title>
+    <title>Katalog Skincare</title>
 </head>
 <link rel="stylesheet" type="text/css" href="./style.css">
 <body>
