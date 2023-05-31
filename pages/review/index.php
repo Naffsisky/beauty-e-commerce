@@ -259,7 +259,7 @@ a {
                with font-awesome or any other icon font library -->
               <li class="nav-header">DASHBOARD</li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="../../index.php" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>Dashboard</p>
                 </a>
@@ -349,7 +349,7 @@ a {
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/produk/index.html" class="nav-link">
+                <a href="pages/produk/index.html" class="nav-link active">
                   <i class="nav-icon fas fa-tags"></i>
                   <p>Produk</p>
                 </a>
