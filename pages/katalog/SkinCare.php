@@ -2,7 +2,6 @@
 require 'config.php';
 
 $produk = query("SELECT * FROM produk");
-
 ?>
 
 <!DOCTYPE html>

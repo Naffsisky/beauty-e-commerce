@@ -1,10 +1,6 @@
 <?php 
 $conn = mysqli_connect("localhost", "root", "", "beautyku");
 
-if (!$result){
-    echo mysqli_error($conn);
-}
-
 function query($query){
     global $conn;
     $result = mysqli_query($conn, $query);
