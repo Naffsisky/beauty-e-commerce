@@ -1,76 +1,95 @@
+<?php 
+require 'config.php';
+
+$id = $_GET["id"];
+
+$produk = query("SELECT * FROM produk WHERE id = $id")[0];
+if(isset($_POST["submit"])){
+    if(ubah($_POST)>0){
+        echo "
+        <script>
+        alert('Data berhasil diubah!');
+        document.location.href = 'index.php';
+        </script>";
+    } else {
+        echo "
+        <script>('Data gagal diubah!');
+        document.location.href = 'index.php';
+        </script>";
+    }
+}
+if (!$result){
+    echo mysqli_error($conn);
+}
+?>
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Keranjang Belanja</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <?php
-    session_start();
-    $conn = mysqli_connect("localhost", "root", "", "beautyku");
-
-     if (!$result){
-    echo mysqli_error($conn);
-    }
-
-
-    // Tambahkan produk ke keranjang belanja
-    if (isset($_POST['add_to_cart'])) {
-      $product_id = $_POST['product_id'];
-      $product_name = $_POST['product_name'];
-      $product_price = $_POST['product_price'];
-
-      // Query INSERT untuk menyimpan data produk ke dalam tabel keranjang_belanja
-      $query = "INSERT INTO keranjang_belanja (product_id, product_name, product_price) VALUES ('$product_id', '$product_name', '$product_price')";
-      $result = mysqli_query($conn, $query);
-
-      if ($result) {
-        echo 'Produk berhasil ditambahkan ke keranjang belanja.';
-      } else {
-        echo 'Gagal menambahkan produk ke keranjang belanja: ' . mysqli_error($conn);
-      }
-    }
-
-    // Hapus produk dari keranjang belanja
-    if (isset($_GET['remove'])) {
-      $product_id = $_GET['remove'];
-
-      // Query DELETE untuk menghapus produk dari tabel keranjang_belanja
-      $query = "DELETE FROM keranjang_belanja WHERE id = '$product_id'";
-      $result = mysqli_query($conn, $query);
-
-      if ($result) {
-        echo 'Produk berhasil dihapus dari keranjang belanja.';
-      } else {
-        echo 'Gagal menghapus produk dari keranjang belanja: ' . mysqli_error($conn);
-      }
-    }
-
-    // Tampilkan keranjang belanja
-    $query = "SELECT * FROM keranjang_belanja";
-    $result = mysqli_query($conn, $query);
-
-    if (mysqli_num_rows($result) > 0) {
-      echo '<h1>Keranjang Belanja</h1>';
-      echo '<div class="cart-container">';
-      while ($product = mysqli_fetch_assoc($result)) {
-        echo '<div class="cart-item">';
-        echo '<div class="details">';
-        echo '<h3>' . $product['product_name'] . '</h3>';
-        echo '<p>Harga: Rp' . number_format($product['product_price'], 0, ',', '.') . '</p>';
-        echo '<button class="remove-button" onclick="window.location.href=\'keranjang.php?remove=' . $product['id'] . '\'">Hapus</button>';
-        echo '</div>';
-        echo '</div>';
-      }
-      echo '</div>';
-    } else {
-      echo '<h1>Keranjang Belanja Kosong</h1>';
-    }
-
-    // Tutup koneksi database
-    mysqli_close($conn);
-    ?>
-  </div>
-</body>
+    <head>
+        <title>Ubah Produk</title>
+        <style type="text/css">
+            *{
+                font-family: "Trebuchet MS";
+            }
+            h1{
+                text-transform: uppercase;
+                color: #177090;
+            }
+            .base{
+                width: 400px;
+                padding: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: #ededed;
+            }
+            label{
+                margin-top: 10px;
+                float: left;
+                text-align: left;
+                width: 100%;
+            }
+            input{
+                padding: 6px;
+                width: 100%;
+                box-sizing: border-box;
+                background-color: #f8f8f8;
+                border: 2px solid #ccc;
+                outline-color: #177090;
+            }
+            button{
+                background-color: #177090;
+                color: #fff;
+                padding: 10px;
+                font-size: 12px;
+                border: 0px;
+                margin-top: 20px;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <h1>Cart</h1>
+        </center>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?=$produk["id"];?>">
+            <input type="hidden" name="gambarLama" value="<?= $produk["gambar"]; ?>">
+            <section class="base" style="border-radius: 10px;">
+                <div style="text-align: center">
+                  <label for="gambar">Gambar Produk</label>
+                  <img src="../produk/img/<?= $produk["gambar"]; ?>" width="70">
+                </div>
+                <div>
+                    <label for="nama">Nama Produk</label>
+                    <p><?= $produk['nama']; ?></p>
+                </div>
+                <div>
+                    <label for="stok">Harga</label>
+                    <p><?= $produk['harga']; ?></p>
+                </div>
+                <div>
+                    <button type="submit" name="submit" onclick="return confirm('Apakah data yang anda masukan sudah benar?')";>Hapus Data</button>
+                </div>
+            </section>
+        </form>
+    </body>
 </html>
