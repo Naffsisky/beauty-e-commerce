@@ -9,7 +9,7 @@ $produk = query("SELECT * FROM produk");
 <head>
     <title>Katalog Skincare</title>
 </head>
-<link rel="stylesheet" type="text/css" href="./style.css">
+<link rel="stylesheet" type="text/css" href="./katalogstyle.css">
 <body>
     <h1>Katalog Produk Skincare</h1>
     <div class="product-container">
