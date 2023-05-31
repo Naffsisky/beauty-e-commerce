@@ -18,9 +18,6 @@ if(isset($_POST["submit"])){
         </script>";
     }
 }
-if (!$result){
-    echo mysqli_error($conn);
-}
 ?>
 <!DOCTYPE html>
 <html>
