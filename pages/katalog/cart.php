@@ -8,7 +8,12 @@
   <div class="container">
     <?php
     session_start();
-    include 'config.php';
+    $conn = mysqli_connect("localhost", "root", "", "beautyku");
+
+     if (!$result){
+    echo mysqli_error($conn);
+    }
+
 
     // Tambahkan produk ke keranjang belanja
     if (isset($_POST['add_to_cart'])) {
