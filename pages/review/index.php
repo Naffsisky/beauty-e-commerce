@@ -420,7 +420,7 @@ a {
                   <a href="skincaregl.html">
                     <div class="skincare-box">
                       <div class="produk-img">
-                        <img src="image/nn.png" />
+                        <img src="image/logo_skincare.png" />
                       </div>
                       <div class="nama-kategori">
                         <strong>SKIN CARE</strong>
@@ -435,7 +435,7 @@ a {
                   <a href="bodygl.html">
                     <div class="skincare-box">
                       <div class="produk-img">
-                        <img src="image/makeupnew.png" />
+                        <img src="image/logo_body.png" />
                       </div>
                       <div class="nama-kategori">
                         <strong>BODY CARE</strong>
@@ -450,7 +450,7 @@ a {
                   <a href="makeupgl.html">
                     <div class="skincare-box">
                       <div class="produk-img">
-                        <img src="image/makeup.png" />
+                        <img src="image/logo_makeup.png" />
                       </div>
                       <div class="nama-kategori">
                         <strong>MAKE UP</strong>
