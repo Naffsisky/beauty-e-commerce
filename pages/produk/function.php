@@ -25,13 +25,23 @@ function tambah($data){
     $nama = htmlspecialchars($data["nama"]);
     $stok = htmlspecialchars($data["stok"]);
     $harga = htmlspecialchars($data["harga"]);
+    $kategori = htmlspecialchars($data["kategori"]);
     $gambar = upload();
 
     if(!$gambar){
         return false;
     }
 
-    $query = "INSERT INTO produk VALUES(NULL, '$eksternal_id','$kode_produk','$nama','$stok','$harga','$gambar')";
+    $result = mysqli_query($conn, "SELECT * FROM produk WHERE kode_produk = '$kode_produk'");
+    if(mysqli_fetch_assoc($result)){
+        echo "<script>
+        alert('kode produk sudah terdaftar!');
+        document.location.href = 'tambah.php';
+        </script>";
+        return false;
+    }
+
+    $query = "INSERT INTO produk VALUES(NULL, '$eksternal_id','$kode_produk','$nama','$stok','$harga','$kategori','$gambar')";
     mysqli_query($conn, $query);
 
     return mysqli_affected_rows($conn);

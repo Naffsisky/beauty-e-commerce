@@ -56,7 +56,7 @@ if (isset($_POST["reset"])) {
     </Head>
     <body>
         <center><h1>Data Produk</h1></center>
-        <center><a href="tambah.php">+ &nbsp; Tambah Produk</a></center>
+        <center><a href="tambah.html">+ &nbsp; Tambah Produk</a></center>
         <br>
         <center>
         <form action="" method="post">

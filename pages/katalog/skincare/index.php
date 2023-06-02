@@ -1,7 +1,7 @@
 <?php 
-require '../config.php';
+require '../functions.php';
 
-$produk = query("SELECT * FROM produk");
+$produk = query("SELECT * FROM produk WHERE kategori = 'skincare'");
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ $produk = query("SELECT * FROM produk");
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Beautyku | Dashboard</title>
+    <title>Katalog | Skincare</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -55,86 +55,7 @@ $produk = query("SELECT * FROM produk");
       rel="stylesheet"
       href="../../../plugins/summernote/summernote-bs4.min.css"
     />
-    <!-- <link rel="stylesheet" href="./katalogstyle.css" /> -->
-    <style>
-        .product-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            grid-gap: 20px;
-        }
-
-        .product-item {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .product-image {
-            height: 200px;
-            margin: 0 auto;
-            display: block;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        .product-name {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        /* CSS untuk halaman keranjang (cart.php) */
-        .cart-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: flex-start;
-        }
-
-        .cart-item {
-            width: 100%;
-            margin: 10px;
-            padding: 10px;
-            background-color: #f5f5f5;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-        }
-
-        .cart-item img {
-            width: 100px;
-            height: 100px;
-            margin-right: 10px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        .cart-item .details {
-            flex-grow: 1;
-        }
-
-        .cart-item h3 {
-            margin-top: 0;
-        }
-
-        .cart-item p {
-            margin: 5px 0;
-        }
-
-        .cart-item button.remove-button {
-            background-color: #e74c3c;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .cart-item button.remove-button:hover {
-            background-color: #c0392b;
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css" />
   </head>
   <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -347,7 +268,7 @@ $produk = query("SELECT * FROM produk");
               </li>
               <li class="nav-header">PENJUALAN</li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-book-open"></i>
                   <p>
                     Katalog
@@ -356,19 +277,19 @@ $produk = query("SELECT * FROM produk");
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <a href="#" class="nav-link active">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Skincare</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/compose.html" class="nav-link">
+                    <a href="../bodycare/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Bodycare</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                    <a href="../makeup/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Makeup</p>
                     </a>
@@ -376,7 +297,7 @@ $produk = query("SELECT * FROM produk");
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/produk/index.html" class="nav-link active">
+                <a href="pages/produk/index.html" class="nav-link">
                   <i class="nav-icon fas fa-tags"></i>
                   <p>Produk</p>
                 </a>
@@ -421,13 +342,13 @@ $produk = query("SELECT * FROM produk");
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">Dashboard</h1>
+                <h1 class="m-0">Katalog Skincare</h1>
               </div>
               <!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Dashboard v1</li>
+                  <li class="breadcrumb-item"><a href="../../../">Home</a></li>
+                  <li class="breadcrumb-item active">Skincare</li>
                 </ol>
               </div>
               <!-- /.col -->
@@ -445,8 +366,8 @@ $produk = query("SELECT * FROM produk");
                 <div class="product-item">
                     <img class="product-image" src="../../produk/img/<?= $row["gambar"]; ?>" alt="Gambar Produk">   
                     <h3 class="product-name"><?= $row['nama']; ?></h3>
-                    <p>Harga: Rp<?= number_format($row['harga'], 0, ',', '.'); ?></p>
-                    <a class="buy-button" href="cart.php?id=<?= $row["id"];?>">Beli</a>
+                    <p class="product-price">Rp<?= number_format($row['harga'], 0, ',', '.'); ?></p>
+                    <h4 class="product-stock">Stok : <?= $row['stok']; ?></h4>
                 </div>
             <?php endforeach; ?>
             </div>
