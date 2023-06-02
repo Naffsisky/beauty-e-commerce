@@ -1,9 +1,15 @@
+<?php 
+require '../config.php';
+
+$produk = query("SELECT * FROM produk");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Beautyku | Skincare</title>
+    <title>Beautyku | Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -13,7 +19,7 @@
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
-      href="../../plugins/fontawesome-free/css/all.min.css"
+      href="../../../plugins/fontawesome-free/css/all.min.css"
     />
     <!-- Ionicons -->
     <link
@@ -23,92 +29,111 @@
     <!-- Tempusdominus Bootstrap 4 -->
     <link
       rel="stylesheet"
-      href="../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"
+      href="../../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"
     />
     <!-- iCheck -->
     <link
       rel="stylesheet"
-      href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css"
+      href="../../../plugins/icheck-bootstrap/icheck-bootstrap.min.css"
     />
     <!-- JQVMap -->
-    <link rel="stylesheet" href="../../plugins/jqvmap/jqvmap.min.css" />
+    <link rel="stylesheet" href="../../../plugins/jqvmap/jqvmap.min.css" />
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css" />
+    <link rel="stylesheet" href="../../../dist/css/adminlte.min.css" />
     <!-- overlayScrollbars -->
     <link
       rel="stylesheet"
-      href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css"
+      href="../../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css"
     />
     <!-- Daterange picker -->
     <link
       rel="stylesheet"
-      href="../../plugins/daterangepicker/daterangepicker.css"
+      href="../../../plugins/daterangepicker/daterangepicker.css"
     />
     <!-- summernote -->
     <link
       rel="stylesheet"
-      href="../../plugins/summernote/summernote-bs4.min.css"
+      href="../../../plugins/summernote/summernote-bs4.min.css"
     />
-    <!-- <link rel="stylesheet" href="./style.css" /> -->
+    <!-- <link rel="stylesheet" href="./katalogstyle.css" /> -->
     <style>
-        * {
-            font-family: poppins;
-          }
-          
-          a {
-            text-decoration: none;
-          }
-          
-          .grid {
+        .product-container {
             display: grid;
-            margin: 50px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             grid-gap: 20px;
-            grid-template-columns: repeat(3, 1fr);
-          }
-          
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-          }
-          
-          .grid > article {
-            width: 100%;
-            box-shadow: 2px 2px 30px silver;
-            background-color: aliceblue;
-            padding: 20px;
-            margin: 8px;
-            cursor: pointer;
-          }
-          
-          .nama-kategori {
-            display: flex;
-            flex-direction: column;
-            color: rgb(103, 99, 99);
-            font-size: 1rem;
-            letter-spacing: 0.2px;
-          }
-          
-          .grid > article:hover {
-            transform: scale(1.1);
-            transition: all ease;
-          }
-          
-          @media (max-width: 1000px) {
-            .grid {
-              grid-template-columns: repeat(2, 1fr);
-            }
-          }
-          
-          @media (max-width: 600px) {
-            .grid {
-              grid-template-columns: repeat(1, 1fr);
-            }
-          }
-          
+        }
 
+        .product-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-image {
+            height: 200px;
+            margin: 0 auto;
+            display: block;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* CSS untuk halaman keranjang (cart.php) */
+        .cart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .cart-item {
+            width: 100%;
+            margin: 10px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .cart-item .details {
+            flex-grow: 1;
+        }
+
+        .cart-item h3 {
+            margin-top: 0;
+        }
+
+        .cart-item p {
+            margin: 5px 0;
+        }
+
+        .cart-item button.remove-button {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart-item button.remove-button:hover {
+            background-color: #c0392b;
+        }
     </style>
   </head>
   <body class="hold-transition sidebar-mini layout-fixed">
@@ -222,7 +247,7 @@
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
               <img
-                src="../../dist/img/user2-160x160.jpg"
+                src="../../../dist/img/user2-160x160.jpg"
                 class="img-circle elevation-2"
                 alt="User Image"
               />
@@ -261,7 +286,7 @@
                with font-awesome or any other icon font library -->
               <li class="nav-header">DASHBOARD</li>
               <li class="nav-item">
-                <a href="../../index.php" class="nav-link">
+                <a href="../../../index.php" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>Dashboard</p>
                 </a>
@@ -414,76 +439,18 @@
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <section id="pilihk">
-          <div class="container">
-            <div class="row">   
-                <div class = "skincaregl">
-                    <main class="grid">
-                        <article>
-                            <a href="ulasan.html">
-                                <img src="image/sabun.png" width="400px" height="400px">
-                                <div class="nama-kategori">
-                                    <strong>Fice Srub</strong>
-                                </div>                   
-                             </a>
-                        </article>
-            
-                        <article>
-                            <a href="ulasan.html">
-                                <img src="image/sabun.png" >
-                                <div class="nama-kategori">
-                                    <strong>Fice Wash</strong>
-                                </div>
-                               
-                            </a>
-                       
-                        </article>
-            
-                        <article>
-                            <a href="ulasan.html">
-                                <img src="image/sabun.png" >
-                                <div class="nama-kategori">
-                                    <strong>Serum</strong>
-                                </div>
-                            </a>
-                               
-                        </article>
-
-                        <article>
-                            <a href="ulasan.html">
-                                <img src="image/sabun.png" >
-                                <div class="nama-kategori">
-                                    <strong>Nivea</strong>
-                                </div>
-                            </a>
-                
-                        </article>
-
-                        <article>
-                            <a href="ulasan.html">
-                                <img src="image/sabun.png" >
-                                <div class="nama-kategori">
-                                    <strong>Rejois</strong>
-                                </div>
-                            </a>
-                               
-                        </article>
-
-            
-                        <article>
-                            <a href="ulasan.html">
-                                <img src="image/sabun.png"  >
-                                <div class="nama-kategori">
-                                    <strong>Moiz</strong>
-                                </div>
-                            
-                             </a>
-                        
-                        </article>
-            
-                    </main>
+        <div class="container">
+            <div class="product-container">
+            <?php foreach ($produk as $row) : ?>
+                <div class="product-item">
+                    <img class="product-image" src="../../produk/img/<?= $row["gambar"]; ?>" alt="Gambar Produk">   
+                    <h3 class="product-name"><?= $row['nama']; ?></h3>
+                    <p>Harga: Rp<?= number_format($row['harga'], 0, ',', '.'); ?></p>
+                    <a class="buy-button" href="cart.php?id=<?= $row["id"];?>">Beli</a>
                 </div>
-        </section>
+            <?php endforeach; ?>
+            </div>
+        </div>
       </div>
       <!-- /.content-wrapper -->
       <footer class="main-footer">
@@ -503,38 +470,38 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <script src="../../../plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="../../plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="../../../plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge("uibutton", $.ui.button);
     </script>
     <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- ChartJS -->
-    <script src="../../plugins/chart.js/Chart.min.js"></script>
+    <script src="../../../plugins/chart.js/Chart.min.js"></script>
     <!-- Sparkline -->
-    <script src="../../plugins/sparklines/sparkline.js"></script>
+    <script src="../../../plugins/sparklines/sparkline.js"></script>
     <!-- JQVMap -->
-    <script src="../../plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="../../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <script src="../../../plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="../../../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
     <!-- jQuery Knob Chart -->
-    <script src="../../plugins/jquery-knob/jquery.knob.min.js"></script>
+    <script src="../../../plugins/jquery-knob/jquery.knob.min.js"></script>
     <!-- daterangepicker -->
-    <script src="../../plugins/moment/moment.min.js"></script>
-    <script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="../../../plugins/moment/moment.min.js"></script>
+    <script src="../../../plugins/daterangepicker/daterangepicker.js"></script>
     <!-- Tempusdominus Bootstrap 4 -->
-    <script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="../../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- Summernote -->
-    <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="../../../plugins/summernote/summernote-bs4.min.js"></script>
     <!-- overlayScrollbars -->
-    <script src="../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="../../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.js"></script>
+    <script src="../../../dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
+    <script src="../../../dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../../dist/js/pages/dashboard.js"></script>
+    <script src="../../../dist/js/pages/dashboard.js"></script>
   </body>
 </html>
