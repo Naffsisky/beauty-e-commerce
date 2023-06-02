@@ -1,3 +1,5 @@
+![Loading GIF](https://raw.githubusercontent.com/PemwebUPNVJT/sistem-penjualan/master/dist/img/loading.gif)
+
 ## Sidebar Navigation
 
 ### Dashboard
