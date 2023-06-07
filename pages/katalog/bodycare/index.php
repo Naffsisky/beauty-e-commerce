@@ -2,6 +2,26 @@
 require '../functions.php';
 
 $produk = query("SELECT * FROM produk WHERE kategori = 'bodycare'");
+
+$sort = $_GET['sort'] ?? '';
+$sortText = 'Sort by';
+
+// Lakukan sorting berdasarkan nilai sort
+if ($sort === 'stok') {
+    usort($produk, function($a, $b) {
+        $stokA = $a['stok'];
+        $stokB = $b['stok'];
+        return $stokA - $stokB;
+    });
+    $sortText = 'Sort by stok';
+} elseif ($sort === 'harga') {
+    usort($produk, function($a, $b) {
+        $hargaA = $a['harga'];
+        $hargaB = $b['harga'];
+        return $hargaA - $hargaB;
+    });
+    $sortText = 'Sort by harga';
+}
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +76,50 @@ $produk = query("SELECT * FROM produk WHERE kategori = 'bodycare'");
       href="../../../plugins/summernote/summernote-bs4.min.css"
     />
     <link rel="stylesheet" href="../style.css" />
+    <style>
+      .dropdown {
+      position: relative;
+      display: inline-block;
+      }
+
+      .dropdown-toggle {
+        padding: 8px 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f9fa;
+        cursor: pointer;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        min-width: 160px;
+        padding: 8px 0;
+        margin: 0;
+        list-style: none;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+      }
+
+      .dropdown-item {
+        display: block;
+        padding: 8px 16px;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s;
+      }
+
+      .dropdown-item:hover {
+        background-color: #f8f9fa;
+      }
+
+      .dropdown-divider {
+        height: 1px;
+        margin: 4px 0;
+        background-color: #ccc;
+      }
+    </style>
   </head>
   <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -361,6 +425,17 @@ $produk = query("SELECT * FROM produk WHERE kategori = 'bodycare'");
 
         <!-- Main content -->
         <div class="container">
+          <div class="dropdown">
+            <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <?php echo $sortText; ?>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="index.html?sort=stok" data-sort="stok">Stok</a>
+              <a class="dropdown-item" href="index.html?sort=harga" data-sort="harga">Harga</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="../bodycare/">Default</a>
+            </div>
+          </div>
             <div class="product-container">
             <?php foreach ($produk as $row) : ?>
                 <div class="product-item">

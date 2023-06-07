@@ -103,6 +103,11 @@ if (!$result){
         border: 2px solid #ccc;
         outline-color: #177090;
     }
+    @media (max-width: 767px) {
+      .base {
+        width: auto;
+      }
+    }
     </style>
   </head>
   <body class="hold-transition sidebar-mini layout-fixed">
@@ -168,35 +173,10 @@ if (!$result){
               </form>
             </div>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="far fa-bell"></i>
-              <span class="badge badge-warning navbar-badge">15</span>
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">
+              <i class="fas fa-book"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <span class="dropdown-item dropdown-header"
-                >15 Notifications</span
-              >
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                <span class="float-right text-muted text-sm">3 mins</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-users mr-2"></i> 8 friend requests
-                <span class="float-right text-muted text-sm">12 hours</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-file mr-2"></i> 3 new reports
-                <span class="float-right text-muted text-sm">2 days</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item dropdown-footer"
-                >See All Notifications</a
-              >
-            </div>
           </li>
           <!-- Sign out -->
           <li class="nav-item">
@@ -409,21 +389,23 @@ if (!$result){
 
         <!-- Main content -->
         <div class="container">
+          <div class="row">
+          <div class="col-md-6 offset-md-3">
             <form action="" method="POST" enctype="multipart/form-data">
-                <section class="base">
-                    <div>
+                <section class="base" style="border-radius:10px;">
+                    <div class="form-group">
                         <label for="kode_produk">Kode Produk</label>
                         <input type="text" name="kode_produk" id="kode_produk" placeholder="Merk-Nama-Ukuran-Size" required>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="nama">Nama Produk</label>
                         <input type="text" name="nama" id="nama" placeholder="ex. Marina Nutri Serum" required>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="stok">Stok</label>
                         <input type="number" min="0" max="9999" name="stok" id="stok" onKeyUp="if(this.value>9999){this.value='9999';}else if(this.value<0){this.value='1';}" placeholder="Min 0" required>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="kategori">Kategori</label>
                         <select class="form-select" aria-label="Default select example" name="kategori" id="kategori" required>
                             <option value="skincare">Skincare</option>
@@ -431,11 +413,11 @@ if (!$result){
                             <option value="makeup">Makeup</option>
                         </select>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="harga">Harga</label>
                         <input type="number" min="1" max="999999999" name="harga" id="harga" onKeyUp="if(this.value>999999999){this.value='999999999';}else if(this.value<0){this.value='1';}" placeholder="Min 1" required>
                     </div>
-                    <div>
+                    <div class="form-group">
                         <label for="gambar">Gambar Produk</label>
                         <input type="file" name="gambar" id="gambar" required>
                     </div>
@@ -444,6 +426,8 @@ if (!$result){
                     </div>
                 </section>
             </form>
+            </div>
+            </div>
             <br />
         </div>
         <!-- /.content -->
