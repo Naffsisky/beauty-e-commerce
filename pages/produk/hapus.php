@@ -1,5 +1,5 @@
 <?php 
-require 'function.php';
+require 'functions.php';
 $eksternal_id = $_GET["id"];
 var_dump($eksternal_id);
 if(hapus($eksternal_id) > 0){

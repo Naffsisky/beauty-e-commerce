@@ -1,5 +1,5 @@
 <?php 
-require 'function.php';
+require 'functions.php';
 
 $produk = query("SELECT * FROM produk");
 

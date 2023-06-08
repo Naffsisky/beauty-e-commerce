@@ -1,7 +1,10 @@
 <?php
-
+session_start();
 $error = '';
-
+if(isset($_SESSION["login"])){
+  header("Location: ../../index.html");
+  exit;
+}
 require './functions.php';
 
 if(isset($_POST["login"])){
@@ -12,8 +15,12 @@ if(isset($_POST["login"])){
     if(mysqli_num_rows($result) === 1){
         $row = mysqli_fetch_assoc($result);
         if(password_verify($password, $row["password"])){
-            header("Location: ../../index.html");
-            exit;
+          header("Location: ../../index.html");
+          $_SESSION["login"] = true;
+          $_SESSION["username"] = $username;
+          $nama = $row["nama"];
+          $_SESSION["nama"] = $nama;
+          exit;
         }
     }
     $error = true;
@@ -46,6 +53,12 @@ if(isset($_POST["login"])){
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css" />
   </head>
   <body class="hold-transition login-page">
+    <?php if($error) : ?>
+      <script>
+        alert('Username atau Password salah!');
+        documentLocation.href = 'login.html';
+      </script>
+    <?php endif; ?>
     <div class="login-box">
       <!-- /.login-logo -->
       <div class="card card-outline card-primary">

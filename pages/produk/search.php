@@ -1,5 +1,5 @@
 <?php
-require 'function.php';
+require 'functions.php';
 
 $sort = $_GET['sort'] ?? '';
 $sortText = 'Sort by';
