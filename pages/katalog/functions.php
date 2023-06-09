@@ -125,11 +125,10 @@ function ubah($data){
 }
 
 function cari($keyword){
-    $query = "SELECT * FROM produk 
-        WHERE 
-    kode_produk LIKE '%$keyword%' OR
+    $query = "SELECT * FROM produk WHERE kategori = 'bodycare'
+    AND
     nama LIKE '%$keyword%'
-    ";
+            ";
     return query($query);
 }
 ?>

@@ -143,40 +143,6 @@ if(isset($_POST["change"])){
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
           <!-- Navbar Search -->
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              data-widget="navbar-search"
-              href="#"
-              role="button"
-            >
-              <i class="fas fa-search"></i>
-            </a>
-            <div class="navbar-search-block">
-              <form class="form-inline">
-                <div class="input-group input-group-sm">
-                  <input
-                    class="form-control form-control-navbar"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                  />
-                  <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                      <i class="fas fa-search"></i>
-                    </button>
-                    <button
-                      class="btn btn-navbar"
-                      type="button"
-                      data-widget="navbar-search"
-                    >
-                      <i class="fas fa-times"></i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="far fa-bell"></i>
@@ -231,7 +197,7 @@ if(isset($_POST["change"])){
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block"><?= $nama ?></a>
+              <a href="#" class="d-block"><?= ucwords($user['nama']) ?></a>
             </div>
           </div>
 
@@ -264,7 +230,7 @@ if(isset($_POST["change"])){
                with font-awesome or any other icon font library -->
               <li class="nav-header">DASHBOARD</li>
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
+                <a href="../../" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>Dashboard</p>
                 </a>
@@ -280,19 +246,19 @@ if(isset($_POST["change"])){
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <a href="../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-danger"></i>
                       <p>Menunggu Konfirmasi</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/compose.html" class="nav-link">
+                    <a href="../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-warning"></i>
                       <p>Pesanan di Proses</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                    <a href="../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-success"></i>
                       <p>Pesanan Selesai</p>
                     </a>
@@ -300,7 +266,7 @@ if(isset($_POST["change"])){
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="../history/" class="nav-link">
                   <i class="nav-icon fas fa-history"></i>
                   <p>
                     Riwayat Pesanan
@@ -309,7 +275,7 @@ if(isset($_POST["change"])){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="../review/" class="nav-link">
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
@@ -318,7 +284,7 @@ if(isset($_POST["change"])){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="../report/" class="nav-link">
                   <i class="nav-icon fas fa-exclamation-circle"></i>
                   <p>Aduan Pembeli</p>
                 </a>
@@ -334,19 +300,19 @@ if(isset($_POST["change"])){
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <a href="../katalog/skincare/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Skincare</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/compose.html" class="nav-link">
+                    <a href="../katalog/bodycare/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Bodycare</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                    <a href="../katalog/makeup/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Makeup</p>
                     </a>
@@ -354,7 +320,7 @@ if(isset($_POST["change"])){
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/kanban.html" class="nav-link">
+                <a href="../produk/" class="nav-link">
                   <i class="nav-icon fas fa-tags"></i>
                   <p>Produk</p>
                 </a>
@@ -380,7 +346,7 @@ if(isset($_POST["change"])){
               </li>
               <li class="nav-header">LOGOUT</li>
               <li class="nav-item">
-                <a href="./pages/login/logout.html" class="nav-link">
+                <a href="../login/logout.html" class="nav-link">
                   <i class="nav-icon fas fa-sign-out-alt"></i>
                   <p>Keluar</p>
                 </a>
@@ -404,7 +370,7 @@ if(isset($_POST["change"])){
               <!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../../">Home</a></li>
                   <li class="breadcrumb-item active">Profile</li>
                 </ol>
               </div>
@@ -432,7 +398,7 @@ if(isset($_POST["change"])){
                   />
                   <!-- Profile picture help block-->
                   <div class="small font-italic text-muted mb-4">
-                    JPG or PNG no larger than 5 MB
+                    JPG or PNG no larger than 3 MB
                   </div>
                   <!-- Profile picture upload button-->
                   <button class="btn btn-primary" type="button" id="buttongambar" name="buttongambar">
@@ -459,7 +425,7 @@ if(isset($_POST["change"])){
                         class="form-control"
                         id="inputUsername"
                         type="text"
-                        placeholder="Enter your username"
+                        placeholder="Masukan username"
                         value="<?= $user['username'] ?>" readonly
                       />
                     </div>
@@ -474,7 +440,7 @@ if(isset($_POST["change"])){
                           class="form-control"
                           id="nama" name="nama"
                           type="text"
-                          placeholder="Enter your first name"
+                          placeholder="Masukan nama"
                           value="<?= $user['nama'] ?>"
                         />
                       </div>
@@ -487,7 +453,7 @@ if(isset($_POST["change"])){
                           class="form-control"
                           id="inputLastName"
                           type="text"
-                          placeholder="Enter your last name"
+                          placeholder="Masukan nomor karyawan"
                           value="<?= $user['no_karyawan'] ?>" readonly
                         />
                       </div>
@@ -516,7 +482,7 @@ if(isset($_POST["change"])){
                           class="form-control"
                           id="domisili" name="domisili"
                           type="text"
-                          placeholder="Enter your location"
+                          placeholder="Masukan domisili"
                           value="<?= $user['domisili'] ?>"
                         />
                       </div>
@@ -530,7 +496,7 @@ if(isset($_POST["change"])){
                         class="form-control"
                         id="inputEmailAddress"
                         type="email"
-                        placeholder="Enter your email address"
+                        placeholder="Masukan email"
                         value="<?= $user['email'] ?>" readonly
                       />
                     </div>
@@ -545,7 +511,7 @@ if(isset($_POST["change"])){
                           class="form-control"
                           id="ponsel" name="ponsel"
                           type="tel"
-                          placeholder="Enter your phone number"
+                          placeholder="Masukan nomor ponsel"
                           value="<?= $user['ponsel'] ?>"
                         />
                       </div>
@@ -559,7 +525,7 @@ if(isset($_POST["change"])){
                           id="tanggal_lahir" name="tanggal_lahir"
                           type="text"
                           name="birthday"
-                          placeholder="Enter your birthday" onfocus="(this.type='date')"
+                          placeholder="Masukan tanggal lahir" onfocus="(this.type='date')"
                           value="<?= $user['tanggal_lahir'] ?>"
                         />
                       </div>

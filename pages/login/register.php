@@ -133,7 +133,7 @@ if (isset($_POST["register"])) {
               <input
                 type="text"
                 class="form-control" name="kode" id="kode"
-                placeholder="Kode Admin"
+                placeholder="Kode Admin" autocomplete="off"
               />
               <div class="input-group-append">
                 <div class="input-group-text">

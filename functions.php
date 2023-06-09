@@ -156,7 +156,10 @@ function ubah_user($data){
     $tanggal_lahir = htmlspecialchars($data["tanggal_lahir"]);
     $gambar = ($data["gambar"]);
     $gambarLama = ($data["gambarLama"]);
-
+     // Nama tidak boleh kosong
+    if(empty($nama)){
+        return "Nama tidak boleh kosong.";
+    }
     if($_FILES['gambar']['error'] === 4){
         $gambar = $gambarLama;
     } else {

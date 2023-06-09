@@ -92,40 +92,6 @@ if($user['gambar'] == NULL){
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
           <!-- Navbar Search -->
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              data-widget="navbar-search"
-              href="#"
-              role="button"
-            >
-              <i class="fas fa-search"></i>
-            </a>
-            <div class="navbar-search-block">
-              <form class="form-inline">
-                <div class="input-group input-group-sm">
-                  <input
-                    class="form-control form-control-navbar"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                  />
-                  <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                      <i class="fas fa-search"></i>
-                    </button>
-                    <button
-                      class="btn btn-navbar"
-                      type="button"
-                      data-widget="navbar-search"
-                    >
-                      <i class="fas fa-times"></i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
               <i class="far fa-bell"></i>
@@ -180,7 +146,7 @@ if($user['gambar'] == NULL){
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block"><?= ucwords($nama) ?></a>
+              <a href="pages/profile/" class="d-block"><?= ucwords($user['nama']) ?></a>
             </div>
           </div>
 
@@ -229,19 +195,19 @@ if($user['gambar'] == NULL){
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <a href="pages/order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-danger"></i>
                       <p>Menunggu Konfirmasi</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/compose.html" class="nav-link">
+                    <a href="pages/order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-warning"></i>
                       <p>Pesanan di Proses</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                    <a href="pages/order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-success"></i>
                       <p>Pesanan Selesai</p>
                     </a>
@@ -249,7 +215,7 @@ if($user['gambar'] == NULL){
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="pages/history/" class="nav-link">
                   <i class="nav-icon fas fa-history"></i>
                   <p>
                     Riwayat Pesanan
@@ -258,7 +224,7 @@ if($user['gambar'] == NULL){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/review/index.html" class="nav-link">
+                <a href="pages/review/" class="nav-link">
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
@@ -267,7 +233,7 @@ if($user['gambar'] == NULL){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="pages/report/" class="nav-link">
                   <i class="nav-icon fas fa-exclamation-circle"></i>
                   <p>Aduan Pembeli</p>
                 </a>
@@ -310,7 +276,7 @@ if($user['gambar'] == NULL){
               </li>
               <li class="nav-header">AKUN</li>
               <li class="nav-item">
-                <a href="pages/profile/index.html" class="nav-link">
+                <a href="pages/profile/" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>Profile</p>
                 </a>
@@ -354,7 +320,7 @@ if($user['gambar'] == NULL){
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Dashboard v1</li>
+                  <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
               </div>
               <!-- /.col -->
@@ -600,6 +566,7 @@ if($user['gambar'] == NULL){
                     </p>
                       </div>
                     </div>
+                    <button class="btn btn-primary float-right" id="withdrawButton">Withdraw</button>
                   </div>
                   <!-- /.card-body -->
                 </div>
