@@ -12,7 +12,13 @@ if(isset($_SESSION['username'])){
 require './functions.php';
 
 $produk = query ("SELECT * FROM produk WHERE stok < 5 ORDER BY stok ASC LIMIT 5");
+$user = query("SELECT * FROM mimin WHERE username = '$username'")[0];
 
+if($user['gambar'] == NULL){
+  $gambar = 'http://bootdey.com/img/Content/avatar/avatar1.png';
+}else{
+  $gambar = 'pages/profile/img/'.$user['gambar'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -168,13 +174,13 @@ $produk = query ("SELECT * FROM produk WHERE stok < 5 ORDER BY stok ASC LIMIT 5"
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
               <img
-                src="dist/img/user2-160x160.jpg"
+                src="<?= $gambar ?>"
                 class="img-circle elevation-2"
                 alt="User Image"
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block"><?= $nama ?></a>
+              <a href="#" class="d-block"><?= ucwords($nama) ?></a>
             </div>
           </div>
 

@@ -146,4 +146,35 @@ function cari($keyword){
     ";
     return query($query);
 }
+
+function ubah_user($data){
+    global $conn;
+    $id = $data["id"];
+    $nama = htmlspecialchars($data["nama"]);
+    $domisili = htmlspecialchars($data["domisili"]);
+    $ponsel = htmlspecialchars($data["ponsel"]);
+    $tanggal_lahir = htmlspecialchars($data["tanggal_lahir"]);
+    $gambar = ($data["gambar"]);
+    $gambarLama = ($data["gambarLama"]);
+
+    if($_FILES['gambar']['error'] === 4){
+        $gambar = $gambarLama;
+    } else {
+        $result = mysqli_query($conn, "SELECT gambar FROM mimin WHERE id = $id");
+        $file = mysqli_fetch_assoc($result);
+        $fileName = implode('.', $file);
+        unlink('/img' . $fileName);
+        $gambar = upload();
+    }
+    $query = "UPDATE mimin SET
+        nama = '$nama',
+        domisili = '$domisili',
+        ponsel = '$ponsel',
+        tanggal_lahir = '$tanggal_lahir',
+        gambar = '$gambar'
+    WHERE id = $id";
+
+    mysqli_query($conn, $query);
+    return mysqli_affected_rows($conn);
+}
 ?>

@@ -1,14 +1,40 @@
 <?php
 
-// require '../login/functions.php';
-// $id = $_GET["id"];
+session_start();
+if(!isset($_SESSION["login"])){
+  header("Location: ../login/login.html");
+  exit;
+}
+if(isset($_SESSION['username'])){
+  $username = $_SESSION['username'];
+  $nama = $_SESSION['nama'];
+}
+require '../../functions.php';
 
-// $admin = query("SELECT * FROM mimin WHERE id = $id")[0];
+$user = query("SELECT * FROM mimin WHERE username = '$username'")[0];
 
-// if (!$result){
-//   echo mysqli_error($conn);
-// }
-
+if($user['gambar'] == NULL){
+  $gambar = 'http://bootdey.com/img/Content/avatar/avatar1.png';
+}else{
+  $gambar = 'img/'.$user['gambar'];
+}
+if(isset($_POST["change"])){
+  // $user['gambar'] = $gambar;
+  // var_dump($_POST);
+  // die;
+  if(ubah_user($_POST)>0){
+      echo "
+      <script>
+      alert('Data berhasil diubah!');
+      document.location.href = 'index.html';
+      </script>";
+  } else {
+      echo "
+      <script>('Data gagal diubah!');
+      document.location.href = 'index.html';
+      </script>";
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -183,7 +209,7 @@
           </li>
           <!-- Sign out -->
           <li class="nav-item">
-            <a class="nav-link" href="./pages/login/logout.php">
+            <a class="nav-link" href="../login/logout.html">
               <i class="fas fa-sign-out-alt"></i>
             </a>
           </li>
@@ -199,13 +225,13 @@
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
               <img
-                src="../../dist/img/user2-160x160.jpg"
+                src="<?= $gambar ?>"
                 class="img-circle elevation-2"
                 alt="User Image"
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block">Alexander Pierce</a>
+              <a href="#" class="d-block"><?= $nama ?></a>
             </div>
           </div>
 
@@ -392,7 +418,6 @@
 
         <!-- Main content -->
         <div class="container-xl px-4 mt-2">
-          <input type="hidden" id="id" value="<?= $admin['id']; ?>">
           <div class="row">
             <div class="container col-xl-4">
               <!-- Profile picture card-->
@@ -402,7 +427,7 @@
                   <!-- Profile picture image-->
                   <img
                     class="img-account-profile rounded-circle mb-2"
-                    src="http://bootdey.com/img/Content/avatar/avatar1.png"
+                    src="<?= $gambar ?>"
                     alt=""
                   />
                   <!-- Profile picture help block-->
@@ -410,8 +435,7 @@
                     JPG or PNG no larger than 5 MB
                   </div>
                   <!-- Profile picture upload button-->
-                  <input type="file" id="profilePicInput" style="display: none;">
-                  <button class="btn btn-primary" type="button" id="profilePicButton">
+                  <button class="btn btn-primary" type="button" id="buttongambar" name="buttongambar">
                     Upload new image
                   </button>
                 </div>
@@ -422,19 +446,21 @@
               <div class="card mb-4">
                 <div class="card-header">Account Details</div>
                 <div class="card-body">
-                  <form>
+                  <form action="" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" id="id" name="id" value="<?= $user['id']; ?>">
+                    <input type="file" id="gambar" name="gambar" style="display: none;" value="<? $user['gambar'] ?>">
+                    <input type="hidden" id="gambarlama" name="gambarLama" value="<?= $user['gambar']; ?>">
                     <!-- Form Group (username)-->
                     <div class="mb-3">
                       <label class="small mb-1" for="inputUsername"
-                        >Username (how your name will appear to other users on
-                        the site)</label
+                        >Username</label
                       >
                       <input
                         class="form-control"
                         id="inputUsername"
                         type="text"
                         placeholder="Enter your username"
-                        value="username"
+                        value="<?= $user['username'] ?>" readonly
                       />
                     </div>
                     <!-- Form Row-->
@@ -442,27 +468,27 @@
                       <!-- Form Group (first name)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputFirstName"
-                          >First name</label
+                          >Nama</label
                         >
                         <input
                           class="form-control"
-                          id="inputFirstName"
+                          id="nama" name="nama"
                           type="text"
                           placeholder="Enter your first name"
-                          value="Valerie"
+                          value="<?= $user['nama'] ?>"
                         />
                       </div>
                       <!-- Form Group (last name)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputLastName"
-                          >Last name</label
+                          >No Karyawan</label
                         >
                         <input
                           class="form-control"
                           id="inputLastName"
                           type="text"
                           placeholder="Enter your last name"
-                          value="Luna"
+                          value="<?= $user['no_karyawan'] ?>" readonly
                         />
                       </div>
                     </div>
@@ -471,41 +497,41 @@
                       <!-- Form Group (organization name)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputOrgName"
-                          >Organization name</label
+                          >Role</label
                         >
                         <input
                           class="form-control"
                           id="inputOrgName"
                           type="text"
-                          placeholder="Enter your organization name"
-                          value="Start Bootstrap"
+                          placeholder="Masukan Role"
+                          value="<?= $user['role'] ?>" readonly
                         />
                       </div>
                       <!-- Form Group (location)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputLocation"
-                          >Location</label
+                          >Domisili</label
                         >
                         <input
                           class="form-control"
-                          id="inputLocation"
+                          id="domisili" name="domisili"
                           type="text"
                           placeholder="Enter your location"
-                          value="San Francisco, CA"
+                          value="<?= $user['domisili'] ?>"
                         />
                       </div>
                     </div>
                     <!-- Form Group (email address)-->
                     <div class="mb-3">
                       <label class="small mb-1" for="inputEmailAddress"
-                        >Email address</label
+                        >Alamat Email</label
                       >
                       <input
                         class="form-control"
                         id="inputEmailAddress"
                         type="email"
                         placeholder="Enter your email address"
-                        value="name@example.com"
+                        value="<?= $user['email'] ?>" readonly
                       />
                     </div>
                     <!-- Form Row-->
@@ -513,33 +539,33 @@
                       <!-- Form Group (phone number)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputPhone"
-                          >Phone number</label
+                          >Nomer Handphone</label
                         >
                         <input
                           class="form-control"
-                          id="inputPhone"
+                          id="ponsel" name="ponsel"
                           type="tel"
                           placeholder="Enter your phone number"
-                          value="555-123-4567"
+                          value="<?= $user['ponsel'] ?>"
                         />
                       </div>
                       <!-- Form Group (birthday)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputBirthday"
-                          >Birthday</label
+                          >Tanggal Lahir</label
                         >
                         <input
                           class="form-control"
-                          id="inputBirthday"
+                          id="tanggal_lahir" name="tanggal_lahir"
                           type="text"
                           name="birthday"
-                          placeholder="Enter your birthday"
-                          value="06/10/1988"
+                          placeholder="Enter your birthday" onfocus="(this.type='date')"
+                          value="<?= $user['tanggal_lahir'] ?>"
                         />
                       </div>
                     </div>
                     <!-- Save changes button-->
-                    <button class="btn btn-primary" type="submit" name="submit">
+                    <button class="btn btn-primary" type="submit" name="change" id="change">
                       Save changes
                     </button>
                   </form>
@@ -603,11 +629,11 @@
     <script src="../../dist/js/pages/dashboard.js"></script>
     <script>
       // JavaScript
-      document.getElementById("profilePicButton").addEventListener("click", function() {
-        document.getElementById("profilePicInput").click();
+      document.getElementById("buttongambar").addEventListener("click", function() {
+        document.getElementById("gambar").click();
       });
 
-      document.getElementById("profilePicInput").addEventListener("change", function() {
+      document.getElementById("gambar").addEventListener("change", function() {
         var file = this.files[0];
         // Lakukan apa pun yang Anda inginkan dengan file yang dipilih, misalnya mengunggahnya ke server
         console.log("File yang dipilih:", file);

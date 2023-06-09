@@ -196,7 +196,7 @@ if(isset($_POST["reset"])){
                 <div class="input-group input-group-sm">
                   <input
                     class="form-control form-control-navbar"
-                    type="text"
+                    type="search"
                     placeholder="Search"
                     aria-label="Search" name="keyword" id="keyword" autocomplete="off"
                   />

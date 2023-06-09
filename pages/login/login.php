@@ -51,14 +51,34 @@ if(isset($_POST["login"])){
     />
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body class="hold-transition login-page">
     <?php if($error) : ?>
       <script>
-        alert('Username atau Password salah!');
-        documentLocation.href = 'login.html';
+        $(document).ready(function() {
+      $('#errorModal').modal('show');
+    });
       </script>
     <?php endif; ?>
+    <div id="errorModal" class="modal" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Kesalahan!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p style="text-align: center; font-weight: bold;">Username atau Password salah!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="login-box">
       <!-- /.login-logo -->
       <div class="card card-outline card-primary">

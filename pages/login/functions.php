@@ -21,6 +21,10 @@ function register($data){
     $username = strtolower(stripslashes($data["username"]));
     $email = htmlspecialchars(stripslashes($data["email"]));
     $role = htmlspecialchars($data["kode"]);
+    $ponsel = htmlspecialchars($data["ponsel"]);
+    $domisili = htmlspecialchars($data["domisili"]);
+    $tanggal_lahir = htmlspecialchars($data["tanggal_lahir"]);
+    $no_karyawan = htmlspecialchars($data["no_karyawan"]);
     $password = mysqli_real_escape_string($conn, $data["password"]);
     $password2 = mysqli_real_escape_string($conn, $data["password2"]);
 
@@ -29,7 +33,7 @@ function register($data){
         echo "
             <script>
                 alert('Username sudah terdaftar!');
-                document.location.href = 'register.php';
+                document.location.href = 'register.html';
             </script>
         ";
         return false;
@@ -39,7 +43,7 @@ function register($data){
         echo "
         <script>
             alert('Konfirmasi password tidak sesuai!');
-            document.location.href = 'register.php';
+            document.location.href = 'register.html';
         </script>
         ";
         return false;
@@ -47,11 +51,11 @@ function register($data){
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     if ($role == "4DM1N"){
-        mysqli_query($conn, "INSERT INTO mimin VALUES (NULL, '$nama', '$username', 'Admin', '$email', '$password', NULL)");
-    } elseif($role == "5T4FF"){
-        mysqli_query($conn, "INSERT INTO mimin VALUES (NULL, '$nama', '$username', 'Manager', '$email', '$password', NULL)");
+        mysqli_query($conn, "INSERT INTO mimin VALUES (NULL, '$nama', '$username', '$tanggal_lahir', '$domisili', 'Admin', '$email', '$ponsel', '$no_karyawan', '$password', NULL)");
+    } elseif($role == "M4N4G3R"){
+        mysqli_query($conn, "INSERT INTO mimin VALUES (NULL, '$nama', '$username', '$tanggal_lahir', '$domisili', 'Manager', '$email', '$ponsel', '$no_karyawan', '$password', NULL)");
     } else {
-        mysqli_query($conn, "INSERT INTO mimin VALUES (NULL, '$nama', '$username', 'Pegawai', '$email', '$password', NULL)");
+        mysqli_query($conn, "INSERT INTO mimin VALUES (NULL, '$nama', '$username', '$tanggal_lahir', '$domisili', 'Pegawai', '$email', '$ponsel', '$no_karyawan', '$password', NULL)");
     }
     return mysqli_affected_rows($conn);
 }
