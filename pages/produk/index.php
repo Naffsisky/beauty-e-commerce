@@ -1,7 +1,22 @@
 <?php 
+session_start();
+if(!isset($_SESSION["login"])){
+  header("Location: ../login/login.html");
+  exit;
+}
+if(isset($_SESSION['username'])){
+  $username = $_SESSION['username'];
+  $nama = $_SESSION['nama'];
+}
 require 'functions.php';
-
+$user = query("SELECT * FROM mimin WHERE username = '$username'")[0];
 $produk = query("SELECT * FROM produk");
+
+if($user['gambar'] == NULL){
+  $gambar = 'http://bootdey.com/img/Content/avatar/avatar1.png';
+}else{
+  $gambar = '../profile/img/'.$user['gambar'];
+}
 
 $sort = $_GET['sort'] ?? '';
 $sortText = 'Sort by';
@@ -33,7 +48,7 @@ if(isset($_POST["reset"])){
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Beautyku | Dashboard</title>
+    <title>Beautyku | Produk</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -224,7 +239,7 @@ if(isset($_POST["reset"])){
           </li>
           <!-- Sign out -->
           <li class="nav-item">
-            <a class="nav-link" href="./pages/login/logout.php">
+            <a class="nav-link" href="../login/logout.html">
               <i class="fas fa-sign-out-alt"></i>
             </a>
           </li>
@@ -240,13 +255,13 @@ if(isset($_POST["reset"])){
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
               <img
-                src="../../dist/img/user2-160x160.jpg"
+                src="<?= $gambar ?>"
                 class="img-circle elevation-2"
                 alt="User Image"
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block">Alexander Pierce</a>
+              <a href="../profile/" class="d-block"><?= ucwords($user['nama']) ?></a>
             </div>
           </div>
 
@@ -279,7 +294,7 @@ if(isset($_POST["reset"])){
                with font-awesome or any other icon font library -->
               <li class="nav-header">DASHBOARD</li>
               <li class="nav-item">
-                <a href="../../index.php" class="nav-link">
+                <a href="../../" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>Dashboard</p>
                 </a>
@@ -295,19 +310,19 @@ if(isset($_POST["reset"])){
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <a href="../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-danger"></i>
                       <p>Menunggu Konfirmasi</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/compose.html" class="nav-link">
+                    <a href="../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-warning"></i>
                       <p>Pesanan di Proses</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                    <a href="../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-success"></i>
                       <p>Pesanan Selesai</p>
                     </a>
@@ -315,7 +330,7 @@ if(isset($_POST["reset"])){
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="../history/" class="nav-link">
                   <i class="nav-icon fas fa-history"></i>
                   <p>
                     Riwayat Pesanan
@@ -324,7 +339,7 @@ if(isset($_POST["reset"])){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./pages/review/ulasan_index.html" class="nav-link">
+                <a href="../review/" class="nav-link">
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
@@ -333,7 +348,7 @@ if(isset($_POST["reset"])){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="../report/" class="nav-link">
                   <i class="nav-icon fas fa-exclamation-circle"></i>
                   <p>Aduan Pembeli</p>
                 </a>
@@ -349,19 +364,19 @@ if(isset($_POST["reset"])){
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <a href="../katalog/skincare/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Skincare</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/compose.html" class="nav-link">
+                    <a href="../katalog/bodycare/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Bodycare</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                    <a href="../katalog/makeup/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Makeup</p>
                     </a>
@@ -369,14 +384,14 @@ if(isset($_POST["reset"])){
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/produk/index.html" class="nav-link active">
+                <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-tags"></i>
                   <p>Produk</p>
                 </a>
               </li>
               <li class="nav-header">AKUN</li>
               <li class="nav-item">
-                <a href="pages/profile/index.html" class="nav-link">
+                <a href="../profile/" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>Profile</p>
                 </a>
@@ -395,7 +410,7 @@ if(isset($_POST["reset"])){
               </li>
               <li class="nav-header">LOGOUT</li>
               <li class="nav-item">
-                <a href="./pages/login/logout.html" class="nav-link">
+                <a href="../login/logout.html" class="nav-link">
                   <i class="nav-icon fas fa-sign-out-alt"></i>
                   <p>Keluar</p>
                 </a>
@@ -419,8 +434,8 @@ if(isset($_POST["reset"])){
               <!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Dashboard v1</li>
+                  <li class="breadcrumb-item"><a href="../../">Home</a></li>
+                  <li class="breadcrumb-item active">Produk</li>
                 </ol>
               </div>
               <!-- /.col -->
@@ -470,8 +485,8 @@ if(isset($_POST["reset"])){
                         <td>Rp. <?= number_format($row["harga"], 0, ',' , '.'); ?></td>
                         <td><img src="img/<?= $row["gambar"]; ?>" width="120"></td>
                         <td>
-                            <a href="ubah.php?id=<?= $row["id"];?>">Edit</a>
-                            <a href="hapus.php?id=<?= $row["eksternal_id"];?>" onclick="return confirm('Anda yakin ingin hapus data ini?')">Hapus</a>
+                            <a href="ubah.html?id=<?= $row["id"];?>">Edit</a>
+                            <a href="hapus.html?id=<?= $row["eksternal_id"];?>" onclick="return confirm('Anda yakin ingin hapus data ini?')">Hapus</a>
                         </td>
                     </tr>
                     <?php $no++;?>

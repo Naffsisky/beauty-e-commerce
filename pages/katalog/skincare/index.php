@@ -1,26 +1,45 @@
 <?php 
+session_start();
+if(!isset($_SESSION["login"])){
+  header("Location: ../../login/login.html");
+  exit;
+}
+if(isset($_SESSION['username'])){
+  $username = $_SESSION['username'];
+  $nama = $_SESSION['nama'];
+}
 require '../functions.php';
 
+$user = query("SELECT * FROM mimin WHERE username = '$username'")[0];
 $produk = query("SELECT * FROM produk WHERE kategori = 'skincare'");
+
+if($user['gambar'] == NULL){
+  $gambar = 'http://bootdey.com/img/Content/avatar/avatar1.png';
+}else{
+  $gambar = '../../profile/img/'.$user['gambar'];
+}
 
 $sort = $_GET['sort'] ?? '';
 $sortText = 'Sort by';
 
 // Lakukan sorting berdasarkan nilai sort
 if ($sort === 'stok') {
-    usort($produk, function($a, $b) {
-        $stokA = $a['stok'];
-        $stokB = $b['stok'];
-        return $stokA - $stokB;
-    });
+    $produk = query("SELECT * FROM produk WHERE kategori = 'skincare' ORDER BY stok ASC");
     $sortText = 'Sort by stok';
 } elseif ($sort === 'harga') {
-    usort($produk, function($a, $b) {
-        $hargaA = $a['harga'];
-        $hargaB = $b['harga'];
-        return $hargaA - $hargaB;
-    });
+    $produk = query("SELECT * FROM produk WHERE kategori = 'skincare' ORDER BY harga ASC");
     $sortText = 'Sort by harga';
+}
+if(isset($_POST["cari"])){
+  $produk = cari_skincare($_POST["keyword"]);
+}
+
+// melakukan tampilan awal saat tombol dengan name and id reset di tekan
+
+if (isset($_POST["reset"])){
+  $produk = query("SELECT * FROM produk WHERE kategori = 'skincare'");
+  $sortText = 'Sort by';
+  $sort = '';
 }
 ?>
 
@@ -160,22 +179,24 @@ if ($sort === 'stok') {
               <i class="fas fa-search"></i>
             </a>
             <div class="navbar-search-block">
-              <form class="form-inline">
+              <form class="form-inline" method="POST" action="">
                 <div class="input-group input-group-sm">
                   <input
                     class="form-control form-control-navbar"
                     type="search"
                     placeholder="Search"
-                    aria-label="Search"
+                    aria-label="Search" name="keyword" id="keyword"
+                    autocomplete="off"
                   />
                   <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
+                    <button class="btn btn-navbar" type="submit" name="cari" id="cari">
                       <i class="fas fa-search"></i>
                     </button>
                     <button
                       class="btn btn-navbar"
                       type="button"
                       data-widget="navbar-search"
+                      name="reset" id="reset"
                     >
                       <i class="fas fa-times"></i>
                     </button>
@@ -216,7 +237,7 @@ if ($sort === 'stok') {
           </li>
           <!-- Sign out -->
           <li class="nav-item">
-            <a class="nav-link" href="./pages/login/logout.php">
+            <a class="nav-link" href="../../login/logout.html">
               <i class="fas fa-sign-out-alt"></i>
             </a>
           </li>
@@ -232,13 +253,13 @@ if ($sort === 'stok') {
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
               <img
-                src="../../../dist/img/user2-160x160.jpg"
+                src="<?= $gambar ?>"
                 class="img-circle elevation-2"
                 alt="User Image"
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block">Alexander Pierce</a>
+              <a href="../../profile/" class="d-block"><?= ucwords($user['nama']) ?></a>
             </div>
           </div>
 
@@ -271,7 +292,7 @@ if ($sort === 'stok') {
                with font-awesome or any other icon font library -->
               <li class="nav-header">DASHBOARD</li>
               <li class="nav-item">
-                <a href="../../../index.php" class="nav-link">
+                <a href="../../../" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>Dashboard</p>
                 </a>
@@ -287,19 +308,19 @@ if ($sort === 'stok') {
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <a href="../../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-danger"></i>
                       <p>Menunggu Konfirmasi</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/compose.html" class="nav-link">
+                    <a href="../../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-warning"></i>
                       <p>Pesanan di Proses</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                    <a href="../../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-success"></i>
                       <p>Pesanan Selesai</p>
                     </a>
@@ -307,7 +328,7 @@ if ($sort === 'stok') {
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="../../history/" class="nav-link">
                   <i class="nav-icon fas fa-history"></i>
                   <p>
                     Riwayat Pesanan
@@ -316,7 +337,7 @@ if ($sort === 'stok') {
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./pages/review/ulasan_index.html" class="nav-link">
+                <a href="../../review/" class="nav-link">
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
@@ -325,7 +346,7 @@ if ($sort === 'stok') {
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="../../report/" class="nav-link">
                   <i class="nav-icon fas fa-exclamation-circle"></i>
                   <p>Aduan Pembeli</p>
                 </a>
@@ -361,14 +382,14 @@ if ($sort === 'stok') {
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/produk/index.html" class="nav-link">
+                <a href="../../produk/" class="nav-link">
                   <i class="nav-icon fas fa-tags"></i>
                   <p>Produk</p>
                 </a>
               </li>
               <li class="nav-header">AKUN</li>
               <li class="nav-item">
-                <a href="pages/profile/index.html" class="nav-link">
+                <a href="../../profile/" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>Profile</p>
                 </a>
@@ -387,7 +408,7 @@ if ($sort === 'stok') {
               </li>
               <li class="nav-header">LOGOUT</li>
               <li class="nav-item">
-                <a href="./pages/login/logout.html" class="nav-link">
+                <a href="../../login/logout.html" class="nav-link">
                   <i class="nav-icon fas fa-sign-out-alt"></i>
                   <p>Keluar</p>
                 </a>
@@ -424,7 +445,7 @@ if ($sort === 'stok') {
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <div class="container">
+        <div class="container" id="content">
           <div class="dropdown">
             <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <?php echo $sortText; ?>
@@ -436,17 +457,18 @@ if ($sort === 'stok') {
               <a class="dropdown-item" href="../skincare/">Default</a>
             </div>
           </div>
-            <div class="product-container">
+          <div class="product-container">
             <?php foreach ($produk as $row) : ?>
-                <div class="product-item">
-                    <img class="product-image" src="../../produk/img/<?= $row["gambar"]; ?>" alt="Gambar Produk">   
-                    <h3 class="product-name"><?= $row['nama']; ?></h3>
-                    <p class="product-price">Rp<?= number_format($row['harga'], 0, ',', '.'); ?></p>
-                    <h4 class="product-stock">Stok : <?= $row['stok']; ?></h4>
-                </div>
+              <div class="product-item">
+                <img class="product-image" src="../../produk/img/<?= $row["gambar"]; ?>" alt="Gambar Produk">   
+                <h3 class="product-name"><?= $row['nama']; ?></h3>
+                <p class="product-price">Rp<?= number_format($row['harga'], 0, ',', '.'); ?></p>
+                <h4 class="product-stock">Stok : <?= $row['stok']; ?></h4>
+              </div>
             <?php endforeach; ?>
-            </div>
+          </div>
         </div>
+        <br />
       </div>
       <!-- /.content-wrapper -->
       <footer class="main-footer">
@@ -464,7 +486,35 @@ if ($sort === 'stok') {
       <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+    <script>
+      var keyword = document.getElementById('keyword');
+      var tombolCari = document.getElementById('cari');
+      var tombolReset = document.getElementById('reset');
+      var content = document.getElementById('content');
+      keyword.addEventListener('keyup', function(){
+        var xhr = new XMLHttpRequest();
 
+        xhr.onreadystatechange = function(){
+          if (xhr.readyState == 4 && xhr.status == 200){
+            content.innerHTML = xhr.responseText;
+          }
+        }
+        xhr.open('GET', 'search.php?keyword=' + keyword.value, true);
+        xhr.send();
+      });
+      tombolReset.addEventListener('click', function(){
+      var xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4 && xhr.status == 200){
+          content.innerHTML = xhr.responseText;
+        }
+      }
+
+      xhr.open('GET', 'search.php?keyword=', true);
+      xhr.send();
+    });
+    </script>
     <!-- jQuery -->
     <script src="../../../plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->

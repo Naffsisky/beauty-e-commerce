@@ -1,4 +1,13 @@
 <?php 
+session_start();
+if(!isset($_SESSION["login"])){
+  header("Location: ../login/login.html");
+  exit;
+}
+if(isset($_SESSION['username'])){
+    $username = $_SESSION['username'];
+    $nama = $_SESSION['nama'];
+}
 require 'functions.php';
 $eksternal_id = $_GET["id"];
 var_dump($eksternal_id);

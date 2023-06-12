@@ -61,12 +61,12 @@ function upload(){
     }
 
     //cek yang diupload berupa gambar
-    $ekstensiGambarValid = ['jpg', 'jpeg', 'png', 'heic'];
+    $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
     $ekstensiGambar = explode('.', $namaFile);
     $ekstensiGambar = strtolower(end($ekstensiGambar));
     if(!in_array($ekstensiGambar,$ekstensiGambarValid)){
         echo "<script>
-        alert('yang Anda upload bukan gambar!');
+        alert('Yang anda upload bukan gambar, atau format harus jpg, jpeg, png!');
         </script>";
         return false;
     }
@@ -74,7 +74,7 @@ function upload(){
     //cek ukuran terlalu besar
     if($ukuranFile > 3000000){
         echo "<script>
-        alert('ukuran gambar terlalu besar!');
+        alert('Ukuran gambar terlalu besar! MAX 3MB');
         </script>";
         return false;
     }
@@ -164,10 +164,13 @@ function ubah_user($data){
         $gambar = $gambarLama;
     } else {
         $result = mysqli_query($conn, "SELECT gambar FROM mimin WHERE id = $id");
+        $gambar = upload();
+        if (!$gambar){
+            return false;
+        }
         $file = mysqli_fetch_assoc($result);
         $fileName = implode('.', $file);
-        unlink('/img' . $fileName);
-        $gambar = upload();
+        unlink('img/' . $fileName);
     }
     $query = "UPDATE mimin SET
         nama = '$nama',

@@ -42,7 +42,7 @@ if(isset($_POST["change"])){
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Beautyku | Dashboard</title>
+    <title>Beautyku | Profile</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -339,7 +339,7 @@ if(isset($_POST["change"])){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../settings/" class="nav-link">
                   <i class="nav-icon fas fa-cog"></i>
                   <p>Settings</p>
                 </a>

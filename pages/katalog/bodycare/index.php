@@ -31,7 +31,7 @@ if ($sort === 'stok') {
     $sortText = 'Sort by harga';
 }
 if(isset($_POST["cari"])){
-  $produk = cari($_POST["keyword"]);
+  $produk = cari_bodycare($_POST["keyword"]);
 }
 
 // melakukan tampilan awal saat tombol dengan name and id reset di tekan
@@ -307,19 +307,19 @@ if(isset($_POST["reset"])){
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../../produk/" class="nav-link">
+                    <a href="../../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-danger"></i>
                       <p>Menunggu Konfirmasi</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../../produk/" class="nav-link">
+                    <a href="../../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-warning"></i>
                       <p>Pesanan di Proses</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../../produk/" class="nav-link">
+                    <a href="../../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-success"></i>
                       <p>Pesanan Selesai</p>
                     </a>
@@ -456,17 +456,18 @@ if(isset($_POST["reset"])){
               <a class="dropdown-item" href="../bodycare/">Default</a>
             </div>
           </div>
-            <div class="product-container">
+          <div class="product-container">
             <?php foreach ($produk as $row) : ?>
-                <div class="product-item">
-                    <img class="product-image" src="../../produk/img/<?= $row["gambar"]; ?>" alt="Gambar Produk">   
-                    <h3 class="product-name"><?= $row['nama']; ?></h3>
-                    <p class="product-price">Rp<?= number_format($row['harga'], 0, ',', '.'); ?></p>
-                    <h4 class="product-stock">Stok : <?= $row['stok']; ?></h4>
-                </div>
-            <?php endforeach; ?>
+            <div class="product-item">
+              <img class="product-image" src="../../produk/img/<?= $row["gambar"]; ?>" alt="Gambar Produk">   
+              <h3 class="product-name"><?= $row['nama']; ?></h3>
+              <p class="product-price">Rp<?= number_format($row['harga'], 0, ',', '.'); ?></p>
+              <h4 class="product-stock">Stok : <?= $row['stok']; ?></h4>
             </div>
+            <?php endforeach; ?>
+          </div>
         </div>
+        <br />
       </div>
       <!-- /.content-wrapper -->
       <footer class="main-footer">

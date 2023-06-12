@@ -124,8 +124,22 @@ function ubah($data){
     return mysqli_affected_rows($conn);
 }
 
-function cari($keyword){
+function cari_bodycare($keyword){
     $query = "SELECT * FROM produk WHERE kategori = 'bodycare'
+    AND
+    nama LIKE '%$keyword%'
+            ";
+    return query($query);
+}
+function cari_skincare($keyword){
+    $query = "SELECT * FROM produk WHERE kategori = 'skincare'
+    AND
+    nama LIKE '%$keyword%'
+            ";
+    return query($query);
+}
+function cari_makeup($keyword){
+    $query = "SELECT * FROM produk WHERE kategori = 'makeup'
     AND
     nama LIKE '%$keyword%'
             ";
