@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if(!isset($_SESSION["login"])){
   header("Location: ../login/login.html");
@@ -18,23 +17,26 @@ if($user['gambar'] == NULL){
 }else{
   $gambar = '../profile/img/'.$user['gambar'];
 }
-if(isset($_POST["change"])){
-  // $user['gambar'] = $gambar;
-  // var_dump($_POST);
-  // die;
-  if(ubah_user($_POST)>0){
-      echo "
-      <script>
-      alert('Data berhasil diubah!');
-      document.location.href = 'index.html';
-      </script>";
+if (isset($_POST["change"])) {
+  $result = ubah_user($_POST);
+
+  if (is_string($result)) {
+      // Menampilkan pesan kesalahan jika ada
+      echo "<script>alert('$result'); document.location.href = 'index.html';</script>";
+  } elseif ($result > 0) {
+      // Menampilkan pesan berhasil jika data berhasil diubah
+      echo "<script>alert('Data berhasil diubah!'); document.location.href = 'index.html';</script>";
   } else {
-      echo "
-      <script>('Data gagal diubah!');
-      document.location.href = 'index.html';
-      </script>";
+      // Menampilkan pesan gagal jika data gagal diubah
+      echo "<script>alert('Data gagal diubah!'); document.location.href = 'index.html';</script>";
+  }
+} else {
+  // Menampilkan pesan jika password baru sama dengan password lama
+  if (isset($_POST["passwordbaru"]) && $_POST["passwordbaru"] === $_POST["passwordlama"]) {
+      echo "<script>alert('Password baru tidak boleh sama dengan password lama!');</script>";
   }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -143,36 +145,6 @@ if(isset($_POST["change"])){
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
           <!-- Navbar Search -->
-          <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="far fa-bell"></i>
-              <span class="badge badge-warning navbar-badge">15</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <span class="dropdown-item dropdown-header"
-                >15 Notifications</span
-              >
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                <span class="float-right text-muted text-sm">3 mins</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-users mr-2"></i> 8 friend requests
-                <span class="float-right text-muted text-sm">12 hours</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-file mr-2"></i> 3 new reports
-                <span class="float-right text-muted text-sm">2 days</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item dropdown-footer"
-                >See All Notifications</a
-              >
-            </div>
-          </li>
           <!-- Sign out -->
           <li class="nav-item">
             <a class="nav-link" href="../login/logout.html">
@@ -279,7 +251,6 @@ if(isset($_POST["change"])){
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
-                    <span class="badge badge-info right">20</span>
                   </p>
                 </a>
               </li>
@@ -327,13 +298,13 @@ if(isset($_POST["change"])){
               </li>
               <li class="nav-header">AKUN</li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../profile/" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>Profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../../client/" target="_blank" class="nav-link">
                   <i class="nav-icon fas fa-globe"></i>
                   <p>Website Client</p>
                 </a>
@@ -365,7 +336,7 @@ if(isset($_POST["change"])){
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">Edit Profile</h1>
+                <h1 class="m-0">Settings</h1>
               </div>
               <!-- /.col -->
               <div class="col-sm-6">
@@ -499,6 +470,43 @@ if(isset($_POST["change"])){
                         placeholder="Masukan email"
                         value="<?= $user['email'] ?>" readonly
                       />
+                    </div>
+                    <div class="mb-3">
+                      <label class="small mb-1" for="inputopassword"
+                        >Password Lama</label
+                      >
+                      <input
+                        class="form-control"
+                        id="opassword" name="opassword"
+                        type="password"
+                        placeholder="Masukan Password Lama"
+                      />
+                    </div>
+                    <div class="row gx-3 mb-3">
+                      <!-- Form Group (organization name)-->
+                      <div class="col-md-6">
+                        <label class="small mb-1" for="inputnpassword"
+                          >Password Baru</label
+                        >
+                        <input
+                          class="form-control"
+                          id="npassword" name="npassword"
+                          type="password"
+                          placeholder="Masukan Password Baru"
+                        />
+                      </div>
+                      <!-- Form Group (location)-->
+                      <div class="col-md-6">
+                        <label class="small mb-1" for="inputvpassword"
+                          >Konfirmasi Password</label
+                        >
+                        <input
+                          class="form-control"
+                          id="vpassword" name="vpassword"
+                          type="password"
+                          placeholder="Konfirmasi Password Baru"
+                        />
+                      </div>
                     </div>
                     <!-- Form Row-->
                     <div class="row gx-3 mb-3">

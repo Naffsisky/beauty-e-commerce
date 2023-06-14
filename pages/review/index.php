@@ -1,9 +1,28 @@
+<?php
+session_start();
+if(!isset($_SESSION["login"])){
+  header("Location: ../login/login.html");
+  exit;
+}
+if(isset($_SESSION['username'])){
+  $username = $_SESSION['username'];
+  $nama = $_SESSION['nama'];
+}
+require '../login/functions.php';
+$user = query("SELECT * FROM mimin WHERE username = '$username'")[0];
+
+if($user['gambar'] == NULL){
+  $gambar = 'http://bootdey.com/img/Content/avatar/avatar1.png';
+}else{
+  $gambar = '../profile/img/'.$user['gambar'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Beautyku | Dashboard</title>
+    <title>Beautyku | Review</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -138,73 +157,9 @@ a {
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
           <!-- Navbar Search -->
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              data-widget="navbar-search"
-              href="#"
-              role="button"
-            >
-              <i class="fas fa-search"></i>
-            </a>
-            <div class="navbar-search-block">
-              <form class="form-inline">
-                <div class="input-group input-group-sm">
-                  <input
-                    class="form-control form-control-navbar"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                  />
-                  <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                      <i class="fas fa-search"></i>
-                    </button>
-                    <button
-                      class="btn btn-navbar"
-                      type="button"
-                      data-widget="navbar-search"
-                    >
-                      <i class="fas fa-times"></i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="far fa-bell"></i>
-              <span class="badge badge-warning navbar-badge">15</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <span class="dropdown-item dropdown-header"
-                >15 Notifications</span
-              >
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                <span class="float-right text-muted text-sm">3 mins</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-users mr-2"></i> 8 friend requests
-                <span class="float-right text-muted text-sm">12 hours</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-file mr-2"></i> 3 new reports
-                <span class="float-right text-muted text-sm">2 days</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item dropdown-footer"
-                >See All Notifications</a
-              >
-            </div>
-          </li>
           <!-- Sign out -->
           <li class="nav-item">
-            <a class="nav-link" href="./pages/login/logout.php">
+            <a class="nav-link" href="../login/logout.html">
               <i class="fas fa-sign-out-alt"></i>
             </a>
           </li>
@@ -220,13 +175,13 @@ a {
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
               <img
-                src="../../dist/img/user2-160x160.jpg"
+                src="<?= $gambar ?>"
                 class="img-circle elevation-2"
                 alt="User Image"
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block">Alexander Pierce</a>
+              <a href="../profile/" class="d-block"><?= ucwords($user['nama']) ?></a>
             </div>
           </div>
 
@@ -259,7 +214,7 @@ a {
                with font-awesome or any other icon font library -->
               <li class="nav-header">DASHBOARD</li>
               <li class="nav-item">
-                <a href="../../index.php" class="nav-link">
+                <a href="../../" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
                   <p>Dashboard</p>
                 </a>
@@ -275,19 +230,19 @@ a {
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <a href="../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-danger"></i>
                       <p>Menunggu Konfirmasi</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/compose.html" class="nav-link">
+                    <a href="../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-warning"></i>
                       <p>Pesanan di Proses</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                    <a href="../order/" class="nav-link">
                       <i class="far fa-circle nav-icon text-success"></i>
                       <p>Pesanan Selesai</p>
                     </a>
@@ -295,7 +250,7 @@ a {
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="../history/" class="nav-link">
                   <i class="nav-icon fas fa-history"></i>
                   <p>
                     Riwayat Pesanan
@@ -304,16 +259,15 @@ a {
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./pages/review/ulasan_index.html" class="nav-link">
+                <a href="#" class="nav-link  active">
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
-                    <span class="badge badge-info right">20</span>
                   </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
+                <a href="../report/" class="nav-link">
                   <i class="nav-icon fas fa-exclamation-circle"></i>
                   <p>Aduan Pembeli</p>
                 </a>
@@ -329,19 +283,19 @@ a {
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <a href="../katalog/skincare/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Skincare</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/compose.html" class="nav-link">
+                    <a href="../katalog/bodycare" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Bodycare</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                    <a href="../katalog/makeup/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Makeup</p>
                     </a>
@@ -349,33 +303,33 @@ a {
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="pages/produk/index.html" class="nav-link active">
+                <a href="../produk/" class="nav-link">
                   <i class="nav-icon fas fa-tags"></i>
                   <p>Produk</p>
                 </a>
               </li>
               <li class="nav-header">AKUN</li>
               <li class="nav-item">
-                <a href="pages/profile/index.html" class="nav-link">
+                <a href="../profile/" class="nav-link">
                   <i class="nav-icon fas fa-user"></i>
                   <p>Profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../../client/" class="nav-link">
                   <i class="nav-icon fas fa-globe"></i>
                   <p>Website Client</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../settings/" class="nav-link">
                   <i class="nav-icon fas fa-cog"></i>
                   <p>Settings</p>
                 </a>
               </li>
               <li class="nav-header">LOGOUT</li>
               <li class="nav-item">
-                <a href="./pages/login/logout.html" class="nav-link">
+                <a href="../login/logout.html">
                   <i class="nav-icon fas fa-sign-out-alt"></i>
                   <p>Keluar</p>
                 </a>
@@ -399,8 +353,8 @@ a {
               <!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active">Dashboard v1</li>
+                  <li class="breadcrumb-item"><a href="../../">Home</a></li>
+                  <li class="breadcrumb-item active">Review</li>
                 </ol>
               </div>
               <!-- /.col -->

@@ -204,36 +204,6 @@ if(isset($_POST["reset"])){
               </form>
             </div>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="far fa-bell"></i>
-              <span class="badge badge-warning navbar-badge">15</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <span class="dropdown-item dropdown-header"
-                >15 Notifications</span
-              >
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                <span class="float-right text-muted text-sm">3 mins</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-users mr-2"></i> 8 friend requests
-                <span class="float-right text-muted text-sm">12 hours</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-file mr-2"></i> 3 new reports
-                <span class="float-right text-muted text-sm">2 days</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item dropdown-footer"
-                >See All Notifications</a
-              >
-            </div>
-          </li>
           <!-- Sign out -->
           <li class="nav-item">
             <a class="nav-link" href="../../login/logout.html">
@@ -340,7 +310,6 @@ if(isset($_POST["reset"])){
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
-                    <span class="badge badge-info right">20</span>
                   </p>
                 </a>
               </li>
@@ -394,13 +363,13 @@ if(isset($_POST["reset"])){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../../../client/" target="_blank" class="nav-link">
                   <i class="nav-icon fas fa-globe"></i>
                   <p>Website Client</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../../settings/" class="nav-link">
                   <i class="nav-icon fas fa-cog"></i>
                   <p>Settings</p>
                 </a>

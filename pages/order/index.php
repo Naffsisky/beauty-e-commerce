@@ -8,22 +8,21 @@ if(isset($_SESSION['username'])){
   $username = $_SESSION['username'];
   $nama = $_SESSION['nama'];
 }
-require '../login/functions.php';
+require 'functions.php';
 $user = query("SELECT * FROM mimin WHERE username = '$username'")[0];
-$produk = query("SELECT * FROM produk WHERE kategori = 'Bodycare' ORDER BY id DESC");
 
 if($user['gambar'] == NULL){
-  $gambar = 'http://bootdey.com/img/Content/avatar/avatar1.png';
-}else{
-  $gambar = '../profile/img/'.$user['gambar'];
-}
+    $gambar = 'http://bootdey.com/img/Content/avatar/avatar1.png';
+  }else{
+    $gambar = '../profile/img/'.$user['gambar'];
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Review | Bodycare</title>
+    <title>Beautyku | Order</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -69,59 +68,7 @@ if($user['gambar'] == NULL){
       rel="stylesheet"
       href="../../plugins/summernote/summernote-bs4.min.css"
     />
-    <!-- <link rel="stylesheet" href="./style.css" /> -->
-    <style>   
-          .grid {
-            display: grid;
-            margin: 50px;
-            align-items: center;
-            grid-gap: 20px;
-            grid-template-columns: repeat(3, 1fr);
-          }
-          
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-          }
-          
-          .grid > article {
-            width: 100%;
-            box-shadow: 2px 2px 30px silver;
-            background-color: aliceblue;
-            padding: 20px;
-            margin: 8px;
-            cursor: pointer;
-          }
-          
-          .nama-kategori {
-            display: flex;
-            flex-direction: column;
-            color: rgb(103, 99, 99);
-            font-size: 1rem;
-            letter-spacing: 0.2px;
-          }
-          
-          .grid > article:hover {
-            transform: scale(1.1);
-            transition: all ease;
-          }
-          
-          @media (max-width: 1000px) {
-            .grid {
-              grid-template-columns: repeat(2, 1fr);
-            }
-          }
-          
-          @media (max-width: 600px) {
-            .grid {
-              grid-template-columns: repeat(1, 1fr);
-            }
-          }
-          
-
-    </style>
+    <!-- <link rel="stylesheet" href="./katalogstyle.css" /> -->
   </head>
   <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -162,22 +109,23 @@ if($user['gambar'] == NULL){
               <i class="fas fa-search"></i>
             </a>
             <div class="navbar-search-block">
-              <form class="form-inline">
+              <form class="form-inline" method="POST" action="">
                 <div class="input-group input-group-sm">
                   <input
                     class="form-control form-control-navbar"
                     type="search"
                     placeholder="Search"
-                    aria-label="Search"
+                    aria-label="Search" name="keyword" id="keyword" autocomplete="off"
                   />
                   <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
+                    <button class="btn btn-navbar" type="submit" name="cari" id="cari">
                       <i class="fas fa-search"></i>
                     </button>
                     <button
                       class="btn btn-navbar"
                       type="button"
                       data-widget="navbar-search"
+                      name="reset" id="reset"
                     >
                       <i class="fas fa-times"></i>
                     </button>
@@ -250,7 +198,7 @@ if($user['gambar'] == NULL){
               </li>
               <li class="nav-header">PESANAN</li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-shopping-cart"></i>
                   <p>
                     Pesanan Sekarang
@@ -259,19 +207,19 @@ if($user['gambar'] == NULL){
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../order/" class="nav-link">
+                    <a href="#" class="nav-link">
                       <i class="far fa-circle nav-icon text-danger"></i>
                       <p>Menunggu Konfirmasi</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../order/" class="nav-link">
+                    <a href="#" class="nav-link">
                       <i class="far fa-circle nav-icon text-warning"></i>
                       <p>Pesanan di Proses</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../order/" class="nav-link">
+                    <a href="#" class="nav-link">
                       <i class="far fa-circle nav-icon text-success"></i>
                       <p>Pesanan Selesai</p>
                     </a>
@@ -288,7 +236,7 @@ if($user['gambar'] == NULL){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../review/" class="nav-link active">
+                <a href="../review/" class="nav-link">
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
@@ -345,7 +293,7 @@ if($user['gambar'] == NULL){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../client/" class="nav-link">
+                <a href="../../client/" target="_blank" class="nav-link">
                   <i class="nav-icon fas fa-globe"></i>
                   <p>Website Client</p>
                 </a>
@@ -377,13 +325,13 @@ if($user['gambar'] == NULL){
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">Review Bodycare</h1>
+                <h1 class="m-0">Dashboard</h1>
               </div>
               <!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="../../">Home</a></li>
-                  <li class="breadcrumb-item active">Review Bodycare</li>
+                  <li class="breadcrumb-item active">Order</li>
                 </ol>
               </div>
               <!-- /.col -->
@@ -395,26 +343,285 @@ if($user['gambar'] == NULL){
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <section id="pilihk">
-          <div class="container">
-            <div class="row">   
-              <div class="skincaregl">
-                <main class="grid">
-                <?php foreach($produk as $row): ?>
-                  <article>
-                    <a href="ulasan.html?id=<?= $row['id'] ?>">
-                      <img src="../produk/img/<?= $row['gambar'] ?>" width="400px" height="400px">
-                      <div class="nama-kategori">
-                        <strong style="text-align: center;"><?= $row['nama'] ?></strong>
-                      </div>                   
-                    </a>
-                  </article>
-                <?php endforeach; ?>
-                </main>
-              </div>
+        <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+            <h3 class="card-title">Menunggu Konfirmasi</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+                </button>
             </div>
-          </div>
-        </section>
+            </div>
+            <div class="card-body p-0">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th style="width: 1%" class="text-center">
+                            No.
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                            Nama Produk
+                        </th>
+                        <th style="width: 10%" class="text-center">
+                            Jumlah
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                            Nama Penerima
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                            Alamat
+                        </th>
+                        <th style="width: 8%" class="text-center">
+                            Status
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                        Aksi
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">
+                            1
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                Nivea - Body Lotion
+                            </a>
+                            <br/>
+                            <small>
+                                Kategori : Bodycare
+                            </small>
+                        </td>
+                        <td class="text-center">
+                            <a>1</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Asep</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Jl. Raya Cipadung No. 9</a>
+                        </td>
+                        <td class="project-state">
+                            <span class="badge badge-danger">Menunggu</span>
+                        </td>
+                        <td class="project-actions text-center">
+                            <a class="btn btn-info btn-sm" href="#">
+                                <i class="fas fa-check">
+                                </i>
+                                Done
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <div class="card">
+            <div class="card-header">
+            <h3 class="card-title">Pesanan Dikemas</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            </div>
+            <div class="card-body p-0">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th style="width: 1%" class="text-center">
+                            No.
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                            Nama Produk
+                        </th>
+                        <th style="width: 10%" class="text-center">
+                            Jumlah
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                            Nama Penerima
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                            Alamat
+                        </th>
+                        <th style="width: 8%" class="text-center">
+                            Status
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                        Aksi
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">
+                            1
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                Scarlett - Body Lotion
+                            </a>
+                            <br/>
+                            <small>
+                                Kategori : Bodycare
+                            </small>
+                        </td>
+                        <td class="text-center">
+                            <a>3</a>
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                Junaidi
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a>Jl. Pandugo Timur No. 12</a>
+                        </td>
+                        <td class="project-state">
+                            <span class="badge badge-warning">Proses</span>
+                        </td>
+                        <td class="project-actions text-center">
+                            <a class="btn btn-info btn-sm" href="#">
+                                <i class="fas fa-check">
+                                </i>
+                                Done
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <div class="card">
+            <div class="card-header">
+            <h3 class="card-title">Pesanan Dikirim</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            </div>
+            <div class="card-body p-0">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th style="width: 1%" class="text-center">
+                            No.
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                            Nama Produk
+                        </th>
+                        <th style="width: 10%" class="text-center">
+                            Jumlah
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                            Nama Penerima
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                            Alamat
+                        </th>
+                        <th style="width: 8%" class="text-center">
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">
+                            1
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                Skintific - Serum
+                            </a>
+                            <br/>
+                            <small>
+                                Kategori : Skincare
+                            </small>
+                        </td>
+                        <td class="text-center">
+                            <a>1</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Yusuf</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Jl. Raya Bandung Timur No. 91</a>
+                        </td>
+                        <td class="project-state">
+                            <span class="badge badge-success">Selesai</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            2
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                Skintific - Sunscreen
+                            </a>
+                            <br/>
+                            <small>
+                                Kategori : Skincare
+                            </small>
+                        </td>
+                        <td class="text-center">
+                            <a>1</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Yusuf</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Jl. Raya Bandung Timur No. 91</a>
+                        </td>
+                        <td class="project-state">
+                            <span class="badge badge-success">Selesai</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            3
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                Skintific - Toner
+                            </a>
+                            <br/>
+                            <small>
+                                Kategori : Skincare
+                            </small>
+                        </td>
+                        <td class="text-center">
+                            <a>1</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Yusuf</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Jl. Raya Bandung Timur No. 91</a>
+                        </td>
+                        <td class="project-state">
+                            <span class="badge badge-success">Selesai</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        
+        <!-- /.card -->
+
+    </section>
+        <!-- /.content -->
       </div>
       <!-- /.content-wrapper -->
       <footer class="main-footer">
@@ -424,7 +631,6 @@ if($user['gambar'] == NULL){
           <b>Version</b> Final Project
         </div>
       </footer>
-
       <!-- Control Sidebar -->
       <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
@@ -432,7 +638,35 @@ if($user['gambar'] == NULL){
       <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
+    <script>
+      var keyword = document.getElementById('keyword');
+      var tombolCari = document.getElementById('cari');
+      var tombolReset = document.getElementById('reset');
+      var content = document.getElementById('content');
+      keyword.addEventListener('keyup', function(){
+        var xhr = new XMLHttpRequest();
 
+        xhr.onreadystatechange = function(){
+          if (xhr.readyState == 4 && xhr.status == 200){
+            content.innerHTML = xhr.responseText;
+          }
+        }
+        xhr.open('GET', 'search.php?keyword=' + keyword.value, true);
+        xhr.send();
+      });
+      tombolReset.addEventListener('click', function(){
+      var xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4 && xhr.status == 200){
+          content.innerHTML = xhr.responseText;
+        }
+      }
+
+      xhr.open('GET', 'search.php?keyword=', true);
+      xhr.send();
+    });
+    </script>
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->

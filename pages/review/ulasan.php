@@ -1,3 +1,25 @@
+<?php
+session_start();
+if(!isset($_SESSION["login"])){
+  header("Location: ../login/login.html");
+  exit;
+}
+if(isset($_SESSION['username'])){
+  $username = $_SESSION['username'];
+  $nama = $_SESSION['nama'];
+}
+require '../login/functions.php';
+
+$id = $_GET["id"];
+$user = query("SELECT * FROM mimin WHERE username = '$username'")[0];
+$produk = query("SELECT * FROM produk WHERE id = $id")[0];
+
+if($user['gambar'] == NULL){
+    $gambar = 'http://bootdey.com/img/Content/avatar/avatar1.png';
+  }else{
+    $gambar = '../profile/img/'.$user['gambar'];
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,19 +38,21 @@
 <body>
     <section id="ulasan">
         <div class="ulasan-heading">
-            <h1>ULASAN  PRODUK</h1>
+            <h1>ULASAN PRODUK</h1>
+            <br>
+            <p><a href="./" style="color: black"><b>Back</b>?</a></p>
         </div>
         <!--box container-->
         <div class="ulasan-box-container">
             <div class="produk">
                 <div class="produk-box">
                     <div class="produk-img">
-                        <img src="image/sabun.png"/>
+                        <img src="../produk/img/<?= $produk['gambar'] ?>"/>
                     </div>
                     <div class="profile-produk">
                         <div class="nama-produk">
-                            <Strong>SKINTIFIC FACE WASH</Strong>
-                            <span>80ml</span>
+                            <Strong style="text-align: center"><?= $produk['nama'] ?></Strong>
+                            <span>Kode : <?= $produk['kode_produk'] ?></span>
                         </div>
                         <div class="review">
                             <i class="fas fa-star"></i> <!--stars-->
@@ -36,11 +60,11 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="far fa-star"></i>
-                            <span>4/5</span>
+                            <span><?= ucwords($produk['kategori']) ?></span>
                         </div>
                     </div>
                     <div class="rincihan-produk">
-                        <p> SKINTIFIC FACE WASH adalah salah satu sabun wajah terbaik di dunia degan komposisi yang aman dan tentunya sudah teruji</p>
+                        <p> <?= ucwords($produk['nama']) ?> adalah salah satu sabun wajah terbaik di dunia degan komposisi yang aman dan tentunya sudah teruji</p>
                     </div>
                 </div>
             </div>
@@ -71,7 +95,7 @@
                 </div>
                 <!--komentar-->
                 <div class="komentar">
-                   <p>Barang ini sangat bagus sekali pemakaian wajah saya langsung bercahaya :)</p> 
+                   <p>Barang ini sangat bagus sekali pemakaian wajah saya langsung bercahaya</p> 
                 </div>
             </div>
             

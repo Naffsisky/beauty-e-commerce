@@ -60,4 +60,10 @@ function register($data){
     return mysqli_affected_rows($conn);
 }
 
+function forgot($data){
+    global $conn;
+    $email = htmlspecialchars(stripslashes($data["email"]));
+    mysqli_query($conn, "INSERT INTO forgot VALUES (NULL, '$email')");
+    return mysqli_affected_rows($conn);
+}
 ?>

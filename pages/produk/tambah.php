@@ -293,7 +293,6 @@ if (!$result){
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
-                    <span class="badge badge-info right">20</span>
                   </p>
                 </a>
               </li>
@@ -347,13 +346,13 @@ if (!$result){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../../client/" target="_blank" class="nav-link">
                   <i class="nav-icon fas fa-globe"></i>
                   <p>Website Client</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../settings/" class="nav-link">
                   <i class="nav-icon fas fa-cog"></i>
                   <p>Settings</p>
                 </a>

@@ -83,151 +83,30 @@
     <nav class="offcanvas-menu">
       <ul>
         <li>
-          <a href="#"><span class="menu-text">Home</span></a>
-          <ul class="offcanvas-submenu">
-            <li><a href="index.html">Home 1</a></li>
-            <li><a href="index-2.html">Home 2</a></li>
-          </ul>
+          <a href="index.html"><span class="menu-text">Home</span></a>
+
         </li>
         <li>
           <a href="#"><span class="menu-text">Shop</span></a>
           <ul class="offcanvas-submenu">
             <li>
-              <a href="#"><span class="menu-text">Shop Grid</span></a>
-              <ul class="offcanvas-submenu">
-                <li>
-                  <a href="shop-grid-3-column.html">Shop Grid 3 Column</a>
-                </li>
-                <li>
-                  <a href="shop-grid-4-column.html">Shop Grid 4 Column</a>
-                </li>
-                <li>
-                  <a href="shop-grid-left-sidebar.html"
-                    >Shop Grid Left Sidebar</a
-                  >
-                </li>
-                <li>
-                  <a href="shop-grid-right-sidebar.html"
-                    >Shop Grid Right Sidebar</a
-                  >
-                </li>
-              </ul>
+              <a href="shop-grid-4-column.html"><span class="menu-text">SKINCARE</span></a>
             </li>
             <li>
-              <a href="#"><span class="menu-text">Shop List</span></a>
-              <ul class="offcanvas-submenu">
-                <li><a href="shop-grid-list.html">Shop List</a></li>
-                <li>
-                  <a href="shop-grid-list-left-sidebar.html"
-                    >Shop List Left Sidebar</a
-                  >
-                </li>
-                <li>
-                  <a href="shop-grid-list-right-sidebar.html"
-                    >Shop List Right Sidebar</a
-                  >
-                </li>
-              </ul>
+              <a href="shop-grid-3-column.html"><span class="menu-text">BODYCARE</span></a>
             </li>
             <li>
-              <a href="#"><span class="menu-text">Shop Single</span></a>
-              <ul class="offcanvas-submenu">
-                <li><a href="single-product.html">Shop Single</a></li>
-                <li>
-                  <a href="single-product-configurable.html">Shop Variable</a>
-                </li>
-                <li>
-                  <a href="single-product-affiliate.html">Shop Affiliate</a>
-                </li>
-                <li><a href="single-product-group.html">Shop Group</a></li>
-              </ul>
+              <a href="shop-grid-1-column.html"><span class="menu-text">MAKEUP</span></a>
             </li>
             <li>
-              <a href="#"><span class="menu-text">other pages</span></a>
-              <ul class="offcanvas-submenu">
-                <li><a href="about-us.html">About Page</a></li>
-                <li><a href="cart.html">Cart Page</a></li>
-                <li><a href="checkout.html">Checkout Page</a></li>
-                <li><a href="compare.html">Compare Page</a></li>
-                <li><a href="login.html">Login &amp; Register Page</a></li>
-                <li><a href="myaccount.html">Account Page</a></li>
-                <li><a href="wishlist.html">Wishlist Page</a></li>
-              </ul>
+              <a href="shop-grid-2-column.html"><span class="menu-text">BEAUTY AND MAKEUP</span></a>
             </li>
           </ul>
         </li>
         <li>
-          <a href="#"><span class="menu-text">Pages</span></a>
-          <ul class="offcanvas-submenu">
-            <li><a href="about-us.html">About Page</a></li>
-            <li><a href="cart.html">Cart Page</a></li>
-            <li><a href="checkout.html">Checkout Page</a></li>
-            <li><a href="compare.html">Compare Page</a></li>
-            <li><a href="login.html">Login &amp; Register Page</a></li>
-            <li><a href="myaccount.html">Account Page</a></li>
-            <li><a href="wishlist.html">Wishlist Page</a></li>
-          </ul>
+          <a href="status.html"><span class="menu-text">ORDER STATUS</span></a>
         </li>
-        <li>
-          <a href="blog-grid-3-column.html"
-            ><span class="menu-text">Blog</span></a
-          >
-          <ul class="offcanvas-submenu">
-            <li>
-              <a href="#"><span class="menu-text">Blog Grid</span></a>
-              <ul class="offcanvas-submenu">
-                <li>
-                  <a href="blog-grid-3-column.html">Blog Grid 3 column</a>
-                </li>
-                <li>
-                  <a href="blog-grid-4-column.html">Blog Grid 4 column</a>
-                </li>
-                <li>
-                  <a href="blog-grid-left-sidebar.html"
-                    >Blog Grid Left Sidebar</a
-                  >
-                </li>
-                <li>
-                  <a href="blog-grid-right-sidebar.html"
-                    >Blog Grid Right Sidebar</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#"><span class="menu-text">Blog List</span></a>
-              <ul class="offcanvas-submenu">
-                <li>
-                  <a href="blog-list-left-sidebar.html"
-                    >Blog List Left Sidebar</a
-                  >
-                </li>
-                <li>
-                  <a href="blog-list-right-sidebar.html"
-                    >Blog List Right Sidebar</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#"><span class="menu-text">Blog Single</span></a>
-              <ul class="offcanvas-submenu">
-                <li><a href="single-blog.html">Single Blog</a></li>
-                <li>
-                  <a href="blog-single-left-sidebar.html"
-                    >Blog Single Left Sidebar</a
-                  >
-                </li>
-                <li>
-                  <a href="blog-single-right-sidebar.html"
-                    >Blog Single Right Sidbar</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="contact.html">Contact Us</a></li>
+             <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
     <div class="offcanvas-social py-30">
@@ -523,162 +402,38 @@
           <ul class="main-menu d-flex justify-content-center">
             <li class="active ml-0">
               <a href="index.html" class="ps-0"
-                >Home <i class="ion-ios-arrow-down"></i
-              ></a>
-              <ul class="sub-menu">
-                <li><a href="index.html">Home 1</a></li>
-                <li><a href="index-2.html">Home 2</a></li>
-              </ul>
+                >Home</a>
             </li>
             <li class="position-static">
-              <a href="shop-grid-3-column.html"
+              <a href="#"
                 >Shop <i class="ion-ios-arrow-down"></i
               ></a>
               <ul class="mega-menu row">
                 <li class="col-3">
                   <ul>
-                    <li class="mega-menu-title"><a href="#">Shop Grid</a></li>
-                    <li>
-                      <a href="shop-grid-3-column.html">Shop Grid 3 Column</a>
-                    </li>
-                    <li>
-                      <a href="shop-grid-4-column.html">Shop Grid 4 Column</a>
-                    </li>
-                    <li>
-                      <a href="shop-grid-left-sidebar.html"
-                        >Shop Grid Left Sidebar</a
-                      >
-                    </li>
-                    <li>
-                      <a href="shop-grid-right-sidebar.html"
-                        >Shop Grid Right Sidebar</a
-                      >
-                    </li>
+                    <li class="mega-menu-title"><a href="shop-grid-4-column.html">SKINCARE</a></li>
                   </ul>
                 </li>
                 <li class="col-3">
                   <ul>
-                    <li class="mega-menu-title"><a href="#">Shop List</a></li>
-                    <li><a href="shop-grid-list.html">Shop List</a></li>
-                    <li>
-                      <a href="shop-grid-list-left-sidebar.html"
-                        >Shop List Left Sidebar</a
-                      >
-                    </li>
-                    <li>
-                      <a href="shop-grid-list-right-sidebar.html"
-                        >Shop List Right Sidebar</a
-                      >
-                    </li>
+                    <li class="mega-menu-title"><a href="shop-grid-3-column.html">Bodycare</a></li>
                   </ul>
                 </li>
                 <li class="col-3">
                   <ul>
-                    <li class="mega-menu-title"><a href="#">Shop Single</a></li>
-                    <li><a href="single-product.html">Shop Single</a></li>
-                    <li>
-                      <a href="single-product-configurable.html"
-                        >Shop Variable</a
-                      >
-                    </li>
-                    <li>
-                      <a href="single-product-affiliate.html">Shop Affiliate</a>
-                    </li>
-                    <li><a href="single-product-group.html">Shop Group</a></li>
-                  </ul>
+                    <li class="mega-menu-title"><a href="shop-grid-1-column.html">MAKEUP</a></li> </ul>
                 </li>
                 <li class="col-3">
                   <ul>
-                    <li class="mega-menu-title"><a href="#">other pages</a></li>
-                    <li><a href="about-us.html">About Page</a></li>
-                    <li><a href="cart.html">Cart Page</a></li>
-                    <li><a href="checkout.html">Checkout Page</a></li>
-                    <li><a href="compare.html">Compare Page</a></li>
+                    <li class="mega-menu-title"><a href="shop-grid-2-column.html">BEAUTY AND MAKEUP</a></li>
                   </ul>
-                </li>
-                <li class="col-6 mt-4">
-                  <a href="single-product.html" class="zoom-in overflow-hidden"
-                    ><img src="assets/img/mega-menu/SC.png" alt="img"
-                  /></a>
-                </li>
-                <li class="col-6 mt-4">
-                  <a href="single-product.html" class="zoom-in overflow-hidden"
-                    ><img src="assets/img/mega-menu/SC.png" alt="img"
-                  /></a>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#">Pages <i class="ion-ios-arrow-down"></i></a>
-              <ul class="sub-menu">
-                <li><a href="about-us.html">About Page</a></li>
-                <li><a href="cart.html">Cart Page</a></li>
-                <li><a href="checkout.html">Checkout Page</a></li>
-                <li><a href="compare.html">Compare Page</a></li>
-                <li><a href="login.html">Login &amp; Register Page</a></li>
-                <li><a href="myaccount.html">Account Page</a></li>
-                <li><a href="wishlist.html">Wishlist Page</a></li>
-              </ul>
+              <a href="status.html">ORDER STATUS </a>
             </li>
-            <li>
-              <a href="blog-grid-3-column.html"
-                >Blog <i class="ion-ios-arrow-down"></i
-              ></a>
-              <ul class="sub-menu">
-                <li>
-                  <a href="blog-grid-3-column.html">Blog Grid</a>
-                  <ul class="sub-menu">
-                    <li>
-                      <a href="blog-grid-3-column.html">Blog Grid 3 column</a>
-                    </li>
-                    <li>
-                      <a href="blog-grid-4-column.html">Blog Grid 4 column</a>
-                    </li>
-                    <li>
-                      <a href="blog-grid-left-sidebar.html"
-                        >Blog Grid Left Sidebar</a
-                      >
-                    </li>
-                    <li>
-                      <a href="blog-grid-right-sidebar.html"
-                        >Blog Grid Right Sidebar</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="blog-single-left-sidebar.html">Blog List</a>
-                  <ul class="sub-menu">
-                    <li>
-                      <a href="blog-list-left-sidebar.html"
-                        >Blog List Left Sidebar</a
-                      >
-                    </li>
-                    <li>
-                      <a href="blog-list-right-sidebar.html"
-                        >Blog List Right Sidebar</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="single-blog.html">Blog Single</a>
-                  <ul class="sub-menu">
-                    <li><a href="single-blog.html">Single Blog</a></li>
-                    <li>
-                      <a href="blog-single-left-sidebar.html"
-                        >Blog Single Left Sidebar</a
-                      >
-                    </li>
-                    <li>
-                      <a href="blog-single-right-sidebar.html"
-                        >Blog Single Right Sidbar</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
+            
             <li><a href="contact.html">contact Us</a></li>
           </ul>
         </div>
@@ -815,7 +570,7 @@
                 >
               </h2>
               <a
-                href="shop-grid-4-column.html"
+                href="shop-grid-3-column.html"
                 class="btn btn-outline-primary btn--lg animated mt-45 mt-sm-25"
                 data-animation-in="fadeInLeft"
                 data-delay-in="1.9"
@@ -854,7 +609,7 @@
                 >
               </h2>
               <a
-                href="shop-grid-4-column.html"
+                href="shop-grid-1-column.html"
                 class="btn btn-outline-primary btn--lg animated mt-45 mt-sm-25"
                 data-animation-in="fadeInLeft"
                 data-delay-in="1.9"
@@ -938,7 +693,7 @@
       <div class="col-md-6 mb-30">
         <div class="banner-thumb">
           <a
-            href="shop-grid-4-column.html"
+            href="shop-grid-2-column.html"
             class="zoom-in d-block overflow-hidden"
           >
             <img src="assets/img/banner/BENER1.jpg" alt="banner-thumb-naile" />
@@ -948,7 +703,7 @@
       <div class="col-md-3 col-sm-6 mb-30">
         <div class="banner-thumb">
           <a
-            href="shop-grid-4-column.html"
+            href="shop-grid-2-column.html"
             class="zoom-in d-block overflow-hidden"
           >
             <img src="assets/img/banner/BENER2.jpg" alt="banner-thumb-naile" />
@@ -958,7 +713,7 @@
       <div class="col-md-3 col-sm-6 mb-30">
         <div class="banner-thumb">
           <a
-            href="shop-grid-4-column.html"
+            href="shop-grid-2-column.html"
             class="zoom-in d-block overflow-hidden"
           >
             <img src="assets/img/banner/BENER3.jpg" alt="banner-thumb-naile" />
@@ -978,10 +733,6 @@
         <div class="col-12">
           <div class="section-title text-center">
             <h2 class="title pb-3 mb-3">Our products</h2>
-            <p class="text">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Perspiciatis, culpa?
-            </p>
           </div>
         </div>
         <div class="col-12">
@@ -2461,7 +2212,7 @@
         <div class="banner-thumb">
           <a
             class="zoom-in d-block overflow-hidden position-relative"
-            href="shop-grid-4-column.html"
+            href="shop-grid-2-column.html"
             ><img src="assets/img/banner/BENER6.jpg" alt="banner-thumb-naile"
           /></a>
         </div>
@@ -2470,7 +2221,7 @@
         <div class="banner-thumb">
           <a
             class="zoom-in d-block overflow-hidden position-relative"
-            href="shop-grid-4-column.html"
+            href="shop-grid-2-column.html"
           >
             <img src="assets/img/banner/BENER5.jpg" alt="banner-thumb-naile"
           /></a>
@@ -2480,7 +2231,7 @@
         <div class="banner-thumb">
           <a
             class="zoom-in d-block overflow-hidden position-relative"
-            href="shop-grid-4-column.html"
+            href="shop-grid-2-column.html"
           >
             <img src="assets/img/banner/BENER4.jpg" alt="banner-thumb-naile"
           /></a>
@@ -2498,10 +2249,6 @@
         <!-- section-title start -->
         <div class="section-title text-center">
           <h2 class="title pb-3 mb-3">New Arrival products</h2>
-          <p class="text">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Dignissimos, repellat.
-          </p>
         </div>
         <!-- section-title end -->
         <div class="product-slider-init theme1 slick-nav">
@@ -2973,177 +2720,486 @@
 </section>
 <!-- product tab repetation end -->
 
-<!-- blog-section start -->
-<section class="blog-section theme1 pb-65">
+<!-- product tab makeup start -->
+<section class="bg-white theme1 pb-80">
   <div class="container">
     <div class="row">
       <div class="col-12">
+        <!-- section-title start -->
         <div class="section-title text-center">
-          <h2 class="title pb-3 mb-3">from our Latest Blogs</h2>
-          <p class="text">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          </p>
+          <h2 class="title pb-3 mb-3">New Makeup Product</h2>
+ 
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="blog-init slick-nav">
+        <!-- section-title end -->
+        <div class="product-slider-init theme1 slick-nav">
           <div class="slider-item">
-            <div class="single-blog">
-              <a
-                class="blog-thumb mb-20 zoom-in d-block overflow-hidden"
-                href="blog-grid-left-sidebar.html"
-              >
-                <img src="assets/img/blog-post/BD2.png" alt="blog-thumb-naile" />
-              </a>
-              <div class="blog-post-content">
-                <a
-                  class="blog-link theme-color d-inline-block mb-10 text-uppercase"
-                  href="https://themeforest.net/user/hastech"
-                  >Fashion</a
-                >
-                <h3 class="title mb-15">
-                  <a href="single-blog.html">This is first Post For Blog</a>
-                </h3>
-                <p class="sub-title">
-                  Posted by
-                  <a
-                    class="theme-color d-inline-block mx-1"
-                    href="https://themeforest.net/user/hastech"
-                    >HasTech</a
-                  >
-                  12TH Nov 2023
-                </p>
+            <div class="card product-card">
+              <div class="card-body p-0">
+                <div class="media flex-column">
+                  <div class="product-thumbnail position-relative">
+                    <span class="badge badge-danger top-right">New</span>
+                    <a href="single-product.html">
+                      <img
+                        class="first-img"
+                        src="assets/img/blog-post/LS2.png"
+                        alt="thumbnail"
+                      />
+                    </a>
+                    <!-- product links -->
+                    <ul class="actions d-flex justify-content-center">
+                      <li>
+                        <a class="action" href="wishlist.html">
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="add to wishlist"
+                            class="icon-heart"
+                          >
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="action"
+                          href="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#compare"
+                        >
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Add to compare"
+                            class="icon-shuffle"
+                          ></span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="action"
+                          href="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#quick-view"
+                        >
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Quick view"
+                            class="icon-magnifier"
+                          ></span>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- product links end-->
+                  </div>
+                  <div class="media-body">
+                    <div class="product-desc">
+                      <h3 class="title">
+                        <a href="shop-grid-4-column.html"
+                          >LIPS STICK</a
+                        >
+                      </h3>
+                      <div class="star-rating">
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star de-selected"></span>
+                      </div>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <span class="product-price">IDR100.000</span>
+                        <button
+                          class="pro-btn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#add-to-cart"
+                        >
+                          <i class="icon-basket"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <!-- slider-item end -->
           <div class="slider-item">
-            <div class="single-blog">
-              <a
-                class="blog-thumb mb-20 zoom-in d-block overflow-hidden"
-                href="blog-grid-left-sidebar.html"
-              >
-                <img src="assets/img/blog-post/EL2.png" alt="blog-thumb-naile" />
-              </a>
-              <div class="blog-post-content">
-                <a
-                  class="blog-link theme-color d-inline-block mb-10 text-uppercase"
-                  href="https://themeforest.net/user/hastech"
-                  >Fashion</a
-                >
-                <h3 class="title mb-15">
-                  <a href="single-blog.html">This is Secound Post For Blog</a>
-                </h3>
-                <p class="sub-title">
-                  Posted by
-                  <a
-                    class="theme-color d-inline-block mx-1"
-                    href="https://themeforest.net/user/hastech"
-                    >HasTech</a
-                  >
-                  12TH Nov 2023
-                </p>
+            <div class="card product-card">
+              <div class="card-body p-0">
+                <div class="media flex-column">
+                  <div class="product-thumbnail position-relative">
+                    <span class="badge badge-danger top-right">New</span>
+                    <a href="single-product.html">
+                      <img
+                        class="first-img"
+                        src="assets/img/blog-post/FD2.png"
+                        alt="thumbnail"
+                      />
+                    </a>
+                    <!-- product links -->
+                    <ul class="actions d-flex justify-content-center">
+                      <li>
+                        <a class="action" href="wishlist.html">
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="add to wishlist"
+                            class="icon-heart"
+                          >
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="action"
+                          href="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#compare"
+                        >
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Add to compare"
+                            class="icon-shuffle"
+                          ></span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="action"
+                          href="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#quick-view"
+                        >
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Quick view"
+                            class="icon-magnifier"
+                          ></span>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- product links end-->
+                  </div>
+                  <div class="media-body">
+                    <div class="product-desc">
+                      <h3 class="title">
+                        <a href="shop-grid-4-column.html"
+                          >FONDETION</a
+                        >
+                      </h3>
+                      <div class="star-rating">
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star de-selected"></span>
+                      </div>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <span class="product-price">IDR135.000</span>
+                        <button
+                          class="pro-btn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#add-to-cart"
+                        >
+                          <i class="icon-basket"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <!-- slider-item end -->
           <div class="slider-item">
-            <div class="single-blog">
-              <a
-                class="blog-thumb mb-20 zoom-in d-block overflow-hidden"
-                href="blog-grid-left-sidebar.html"
-              >
-                <img src="assets/img/blog-post/FD2.png" alt="blog-thumb-naile" />
-              </a>
-              <div class="blog-post-content">
-                <a
-                  class="blog-link theme-color d-inline-block mb-10 text-uppercase"
-                  href="https://themeforest.net/user/hastech"
-                  >Fashion</a
-                >
-                <h3 class="title mb-15">
-                  <a href="single-blog.html">This is third Post For Blog</a>
-                </h3>
-                <p class="sub-title">
-                  Posted by
-                  <a
-                    class="theme-color d-inline-block mx-1"
-                    href="https://themeforest.net/user/hastech"
-                    >HasTech</a
-                  >
-                  12TH Nov 2023
-                </p>
+            <div class="card product-card">
+              <div class="card-body p-0">
+                <div class="media flex-column">
+                  <div class="product-thumbnail position-relative">
+                    <span class="badge badge-danger top-right">New</span>
+                    <a href="single-product.html">
+                      <img
+                        class="first-img"
+                        src="assets/img/blog-post/BD2.png"
+                        alt="thumbnail"
+                      />
+                    </a>
+                    <!-- product links -->
+                    <ul class="actions d-flex justify-content-center">
+                      <li>
+                        <a class="action" href="wishlist.html">
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="add to wishlist"
+                            class="icon-heart"
+                          >
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="action"
+                          href="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#compare"
+                        >
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Add to compare"
+                            class="icon-shuffle"
+                          ></span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="action"
+                          href="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#quick-view"
+                        >
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Quick view"
+                            class="icon-magnifier"
+                          ></span>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- product links end-->
+                  </div>
+                  <div class="media-body">
+                    <div class="product-desc">
+                      <h3 class="title">
+                        <a href="shop-grid-4-column.html"
+                          >POWDER</a
+                        >
+                      </h3>
+                      <div class="star-rating">
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star de-selected"></span>
+                      </div>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <span class="product-price">IDR90.000</span>
+                        <button
+                          class="pro-btn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#add-to-cart"
+                        >
+                          <i class="icon-basket"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <!-- slider-item end -->
           <div class="slider-item">
-            <div class="single-blog">
-              <a
-                class="blog-thumb mb-20 zoom-in d-block overflow-hidden"
-                href="blog-grid-left-sidebar.html"
-              >
-                <img src="assets/img/blog-post/MS2.png" alt="blog-thumb-naile" />
-              </a>
-              <div class="blog-post-content">
-                <a
-                  class="blog-link theme-color d-inline-block mb-10 text-uppercase"
-                  href="https://themeforest.net/user/hastech"
-                  >Fashion</a
-                >
-                <h3 class="title mb-15">
-                  <a href="single-blog.html">This is fourth Post For Blog</a>
-                </h3>
-                <p class="sub-title">
-                  Posted by
-                  <a
-                    class="theme-color d-inline-block mx-1"
-                    href="https://themeforest.net/user/hastech"
-                    >HasTech</a
-                  >
-                  12TH Nov 2023
-                </p>
+            <div class="card product-card">
+              <div class="card-body p-0">
+                <div class="media flex-column">
+                  <div class="product-thumbnail position-relative">
+                    <span class="badge badge-danger top-right">New</span>
+                    <a href="single-product.html">
+                      <img
+                        class="first-img"
+                        src="assets/img/blog-post/EL2.png"
+                        alt="thumbnail"
+                      />
+                    </a>
+                    <!-- product links -->
+                    <ul class="actions d-flex justify-content-center">
+                      <li>
+                        <a class="action" href="wishlist.html">
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="add to wishlist"
+                            class="icon-heart"
+                          >
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="action"
+                          href="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#compare"
+                        >
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Add to compare"
+                            class="icon-shuffle"
+                          ></span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="action"
+                          href="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#quick-view"
+                        >
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Quick view"
+                            class="icon-magnifier"
+                          ></span>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- product links end-->
+                  </div>
+                  <div class="media-body">
+                    <div class="product-desc">
+                      <h3 class="title">
+                        <a href="shop-grid-4-column.html"
+                          >EYELINER</a
+                        >
+                      </h3>
+                      <div class="star-rating">
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star de-selected"></span>
+                      </div>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <span class="product-price">IDR100.000</span>
+                        <button
+                          class="pro-btn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#add-to-cart"
+                        >
+                          <i class="icon-basket"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <!-- slider-item end -->
           <div class="slider-item">
-            <div class="single-blog">
-              <a
-                class="blog-thumb mb-20 zoom-in d-block overflow-hidden"
-                href="blog-grid-left-sidebar.html"
-              >
-                <img src="assets/img/blog-post/LS2.png" alt="blog-thumb-naile" />
-              </a>
-              <div class="blog-post-content">
-                <a
-                  class="blog-link theme-color d-inline-block mb-10 text-uppercase"
-                  href="https://themeforest.net/user/hastech"
-                  >Fashion</a
-                >
-                <h3 class="title mb-15">
-                  <a href="single-blog.html">This is fiveth Post For Blog</a>
-                </h3>
-                <h5 class="sub-title">
-                  Posted by
-                  <a
-                    class="theme-color d-inline-block mx-1"
-                    href="https://themeforest.net/user/hastech"
-                    >HasTech
-                  </a>
-                  12TH Nov 2023
-                </h5>
+            <div class="card product-card">
+              <div class="card-body p-0">
+                <div class="media flex-column">
+                  <div class="product-thumbnail position-relative">
+                    <span class="badge badge-danger top-right">New</span>
+                    <a href="single-product.html">
+                      <img
+                        class="first-img"
+                        src="assets/img/blog-post/MS2.png"
+                        alt="thumbnail"
+                      />
+                    </a>
+                    <!-- product links -->
+                    <ul class="actions d-flex justify-content-center">
+                      <li>
+                        <a class="action" href="wishlist.html">
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="add to wishlist"
+                            class="icon-heart"
+                          >
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="action"
+                          href="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#compare"
+                        >
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Add to compare"
+                            class="icon-shuffle"
+                          ></span>
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="action"
+                          href="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#quick-view"
+                        >
+                          <span
+                            data-bs-toggle="tooltip"
+                            data-placement="bottom"
+                            title="Quick view"
+                            class="icon-magnifier"
+                          ></span>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- product links end-->
+                  </div>
+                  <div class="media-body">
+                    <div class="product-desc">
+                      <h3 class="title">
+                        <a href="shop-grid-4-column.html"
+                          ></a
+                        >
+                      </h3>
+                      <div class="star-rating">
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star"></span>
+                        <span class="ion-ios-star de-selected"></span>
+                      </div>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <span class="product-price">IDR150.000</span>
+                        <button
+                          class="pro-btn"
+                          data-bs-toggle="modal"
+                          data-bs-target="#add-to-cart"
+                        >
+                          <i class="icon-basket"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <!-- slider-item end -->
+          <!-- New women's Fresh Faced Trendy cream -->
         </div>
       </div>
     </div>
   </div>
 </section>
+<!-- product tab makeup end -->
+
 <!-- blog-section end -->
 <!-- brand slider start -->
 <div class="brand-slider-section theme1 bg-white">
@@ -3613,13 +3669,13 @@
           <div class="col-lg-5 divide-right">
             <div class="row">
               <div class="col-md-6">
-                <img src="assets/img/modal/1.jpg" alt="img" />
+                <img src="assets/img/product/TN2.png" alt="img" />
               </div>
               <div class="col-md-6 mb-2 mb-md-0">
                 <h4 class="product-name">
-                  New Balance Running Arishi trainers in triple
+                  TONER
                 </h4>
-                <h5 class="price">IDR29.00</h5>
+                <h5 class="price">IDR110.000</h5>
                 <h6 class="color">
                   <strong>Dimension: </strong>: <span class="dmc">40x60cm</span>
                 </h6>
@@ -3630,10 +3686,10 @@
           <div class="col-lg-7">
             <div class="modal-cart-content">
               <p class="cart-products-count">There is 1 item in your cart.</p>
-              <p><strong>Total products:</strong>&nbsp;IDR123.72</p>
-              <p><strong>Total shipping:</strong>&nbsp;IDR7.00</p>
+              <p><strong>Total products:</strong>&nbsp;IDR110.000</p>
+              <p><strong>Total shipping:</strong>&nbsp;IDR0.00</p>
               <p><strong>Taxes</strong>&nbsp;IDR0.00</p>
-              <p><strong>Total:</strong>&nbsp;IDR130.72 (tax excl.)</p>
+              <p><strong>Total:</strong>&nbsp;IDR110.00 (tax excl.)</p>
               <div class="cart-content-btn">
                 <button
                   type="button"

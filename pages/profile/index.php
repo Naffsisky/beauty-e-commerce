@@ -18,23 +18,23 @@ if($user['gambar'] == NULL){
 }else{
   $gambar = 'img/'.$user['gambar'];
 }
-if(isset($_POST["change"])){
-  // $user['gambar'] = $gambar;
-  // var_dump($_POST);
-  // die;
-  if(ubah_user($_POST)>0){
-      echo "
-      <script>
-      alert('Data berhasil diubah!');
-      document.location.href = 'index.html';
-      </script>";
-  } else {
-      echo "
-      <script>('Data gagal diubah!');
-      document.location.href = 'index.html';
-      </script>";
-  }
-}
+// if(isset($_POST["change"])){
+//   $user['gambar'] = $gambar;
+//   var_dump($_POST);
+//   die;
+//   if(ubah_user($_POST)>0){
+//       echo "
+//       <script>
+//       alert('Data berhasil diubah!');
+//       document.location.href = 'index.html';
+//       </script>";
+//   } else {
+//       echo "
+//       <script>('Data gagal diubah!');
+//       document.location.href = 'index.html';
+//       </script>";
+//   }
+// }
 ?>
 
 <!DOCTYPE html>
@@ -143,36 +143,6 @@ if(isset($_POST["change"])){
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
           <!-- Navbar Search -->
-          <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="far fa-bell"></i>
-              <span class="badge badge-warning navbar-badge">15</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <span class="dropdown-item dropdown-header"
-                >15 Notifications</span
-              >
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-envelope mr-2"></i> 4 new messages
-                <span class="float-right text-muted text-sm">3 mins</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-users mr-2"></i> 8 friend requests
-                <span class="float-right text-muted text-sm">12 hours</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
-                <i class="fas fa-file mr-2"></i> 3 new reports
-                <span class="float-right text-muted text-sm">2 days</span>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item dropdown-footer"
-                >See All Notifications</a
-              >
-            </div>
-          </li>
           <!-- Sign out -->
           <li class="nav-item">
             <a class="nav-link" href="../login/logout.html">
@@ -279,7 +249,6 @@ if(isset($_POST["change"])){
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
-                    <span class="badge badge-info right">20</span>
                   </p>
                 </a>
               </li>
@@ -333,7 +302,7 @@ if(isset($_POST["change"])){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="../../client/" target="_blank" class="nav-link">
                   <i class="nav-icon fas fa-globe"></i>
                   <p>Website Client</p>
                 </a>
@@ -365,7 +334,7 @@ if(isset($_POST["change"])){
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">Edit Profile</h1>
+                <h1 class="m-0">Profile <?= ucwords($user['nama']) ?></h1>
               </div>
               <!-- /.col -->
               <div class="col-sm-6">
@@ -401,9 +370,6 @@ if(isset($_POST["change"])){
                     JPG or PNG no larger than 3 MB
                   </div>
                   <!-- Profile picture upload button-->
-                  <button class="btn btn-primary" type="button" id="buttongambar" name="buttongambar">
-                    Upload new image
-                  </button>
                 </div>
               </div>
             </div>
@@ -421,13 +387,7 @@ if(isset($_POST["change"])){
                       <label class="small mb-1" for="inputUsername"
                         >Username</label
                       >
-                      <input
-                        class="form-control"
-                        id="inputUsername"
-                        type="text"
-                        placeholder="Masukan username"
-                        value="<?= $user['username'] ?>" readonly
-                      />
+                      <span class="form-control"><?= $user['username'] ?></span>
                     </div>
                     <!-- Form Row-->
                     <div class="row gx-3 mb-3">
@@ -436,26 +396,14 @@ if(isset($_POST["change"])){
                         <label class="small mb-1" for="inputFirstName"
                           >Nama</label
                         >
-                        <input
-                          class="form-control"
-                          id="nama" name="nama"
-                          type="text"
-                          placeholder="Masukan nama"
-                          value="<?= $user['nama'] ?>"
-                        />
+                        <span class="form-control"><?= $user['nama'] ?></span>
                       </div>
                       <!-- Form Group (last name)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputLastName"
                           >No Karyawan</label
                         >
-                        <input
-                          class="form-control"
-                          id="inputLastName"
-                          type="text"
-                          placeholder="Masukan nomor karyawan"
-                          value="<?= $user['no_karyawan'] ?>" readonly
-                        />
+                        <span class="form-control"><?= $user['no_karyawan'] ?></span>
                       </div>
                     </div>
                     <!-- Form Row -->
@@ -465,26 +413,14 @@ if(isset($_POST["change"])){
                         <label class="small mb-1" for="inputOrgName"
                           >Role</label
                         >
-                        <input
-                          class="form-control"
-                          id="inputOrgName"
-                          type="text"
-                          placeholder="Masukan Role"
-                          value="<?= $user['role'] ?>" readonly
-                        />
+                        <span class="form-control"><?= $user['role'] ?></span>
                       </div>
                       <!-- Form Group (location)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputLocation"
                           >Domisili</label
                         >
-                        <input
-                          class="form-control"
-                          id="domisili" name="domisili"
-                          type="text"
-                          placeholder="Masukan domisili"
-                          value="<?= $user['domisili'] ?>"
-                        />
+                        <span class="form-control"><?= $user['domisili'] ?></span>
                       </div>
                     </div>
                     <!-- Form Group (email address)-->
@@ -492,13 +428,7 @@ if(isset($_POST["change"])){
                       <label class="small mb-1" for="inputEmailAddress"
                         >Alamat Email</label
                       >
-                      <input
-                        class="form-control"
-                        id="inputEmailAddress"
-                        type="email"
-                        placeholder="Masukan email"
-                        value="<?= $user['email'] ?>" readonly
-                      />
+                      <span class="form-control"><?= $user['email'] ?></span>
                     </div>
                     <!-- Form Row-->
                     <div class="row gx-3 mb-3">
@@ -507,33 +437,17 @@ if(isset($_POST["change"])){
                         <label class="small mb-1" for="inputPhone"
                           >Nomer Handphone</label
                         >
-                        <input
-                          class="form-control"
-                          id="ponsel" name="ponsel"
-                          type="tel"
-                          placeholder="Masukan nomor ponsel"
-                          value="<?= $user['ponsel'] ?>"
-                        />
+                        <span class="form-control"><?= $user['ponsel'] ?></span>
                       </div>
                       <!-- Form Group (birthday)-->
                       <div class="col-md-6">
                         <label class="small mb-1" for="inputBirthday"
                           >Tanggal Lahir</label
                         >
-                        <input
-                          class="form-control"
-                          id="tanggal_lahir" name="tanggal_lahir"
-                          type="text"
-                          name="birthday"
-                          placeholder="Masukan tanggal lahir" onfocus="(this.type='date')"
-                          value="<?= $user['tanggal_lahir'] ?>"
-                        />
+                        <span class="form-control"><?= $user['tanggal_lahir'] ?></span>
                       </div>
                     </div>
                     <!-- Save changes button-->
-                    <button class="btn btn-primary" type="submit" name="change" id="change">
-                      Save changes
-                    </button>
                   </form>
                 </div>
               </div>

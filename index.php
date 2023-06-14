@@ -14,6 +14,14 @@ require './functions.php';
 $produk = query ("SELECT * FROM produk WHERE stok < 5 ORDER BY stok ASC LIMIT 5");
 $user = query("SELECT * FROM mimin WHERE username = '$username'")[0];
 
+//  menampilkan semua total produk
+$jumlah_produk = query("SELECT COUNT(*) AS jumlah_produk FROM produk")[0];
+$total_produk = $jumlah_produk['jumlah_produk'];
+
+// menampilkan user baru
+$jumlah_user = query("SELECT COUNT(*) AS jumlah_user FROM mimin")[0];
+$total_user = $jumlah_user['jumlah_user'];
+
 if($user['gambar'] == NULL){
   $gambar = 'http://bootdey.com/img/Content/avatar/avatar1.png';
 }else{
@@ -228,7 +236,6 @@ if($user['gambar'] == NULL){
                   <i class="nav-icon fas fa-star"></i>
                   <p>
                     Ulasan Pembeli
-                    <span class="badge badge-info right">20</span>
                   </p>
                 </a>
               </li>
@@ -282,13 +289,13 @@ if($user['gambar'] == NULL){
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="./client/" target="_blank" class="nav-link">
                   <i class="nav-icon fas fa-globe"></i>
                   <p>Website Client</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="./pages/settings/" class="nav-link">
                   <i class="nav-icon fas fa-cog"></i>
                   <p>Settings</p>
                 </a>
@@ -357,12 +364,11 @@ if($user['gambar'] == NULL){
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                    <p>Statistik Penjualan</p>
+                    <h3><?= $total_produk ?></h3>
+                    <p>Total Produk</p>
                   </div>
                   <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
+                    <i class="ion ion-bag"></i>
                   </div>
                   <a href="#" class="small-box-footer"
                     >More info <i class="fas fa-arrow-circle-right"></i
@@ -374,8 +380,7 @@ if($user['gambar'] == NULL){
                 <!-- small box -->
                 <div class="small-box bg-warning">
                   <div class="inner">
-                    <h3>44</h3>
-
+                    <h3><?= $total_user ?></h3>
                     <p>Pengguna Baru</p>
                   </div>
                   <div class="icon">

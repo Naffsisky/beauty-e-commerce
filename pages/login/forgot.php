@@ -1,3 +1,16 @@
+<?php
+require './functions.php';
+if(isset($_POST["submit"])){
+  if(forgot($_POST) > 0){
+    echo "
+      <script>
+        alert('Password Akan Dikirimkan Ke Email Anda!');
+        document.location.href = 'login.php';
+      </script>
+    ";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,16 +40,16 @@
     <div class="login-box">
       <div class="card card-outline card-primary">
         <div class="card-header text-center">
-          <a href="../../index.html" class="h1"><b>Recovery</b>Admin</a>
+          <a href="../../index.html" class="h1"><b>Forgot</b>Admin</a>
         </div>
         <div class="card-body">
           <p class="login-box-msg">
             Silahkan Masukan E-mail Anda, Password Akan Dikirimkan Melalui
             E-mail.
           </p>
-          <form action="recover.html" method="post">
+          <form action="" method="POST">
             <div class="input-group mb-3">
-              <input type="email" class="form-control" placeholder="Email" />
+              <input type="email" class="form-control" placeholder="Email" id="email" name="email" />
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
@@ -45,7 +58,7 @@
             </div>
             <div class="row">
               <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block">
+                <button type="submit" name="submit" class="btn btn-primary btn-block">
                   Request new password
                 </button>
               </div>
