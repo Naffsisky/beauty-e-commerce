@@ -21,20 +21,18 @@ if (isset($_POST["change"])) {
   $result = ubah_user($_POST);
 
   if (is_string($result)) {
-      // Menampilkan pesan kesalahan jika ada
-      echo "<script>alert('$result'); document.location.href = 'index.html';</script>";
+    // Menampilkan pesan kesalahan jika ada
+    echo "<script>alert('$result'); document.location.href = 'index.html';</script>";
   } elseif ($result > 0) {
-      // Menampilkan pesan berhasil jika data berhasil diubah
-      echo "<script>alert('Data berhasil diubah!'); document.location.href = 'index.html';</script>";
+    // Menampilkan pesan berhasil jika data berhasil diubah
+    echo "<script>alert('Data berhasil diubah!'); document.location.href = 'index.html';</script>";
   } else {
-      // Menampilkan pesan gagal jika data gagal diubah
-      echo "<script>alert('Data gagal diubah!'); document.location.href = 'index.html';</script>";
+    // Menampilkan pesan gagal jika data gagal diubah
+    echo "<script>alert('Data gagal diubah!'); document.location.href = 'index.html';</script>";
   }
-} else {
+} elseif (isset($_POST["passwordbaru"]) && $_POST["passwordbaru"] === $_POST["passwordlama"]) {
   // Menampilkan pesan jika password baru sama dengan password lama
-  if (isset($_POST["passwordbaru"]) && $_POST["passwordbaru"] === $_POST["passwordlama"]) {
-      echo "<script>alert('Password baru tidak boleh sama dengan password lama!');</script>";
-  }
+  echo "<script>alert('Password baru tidak boleh sama dengan password lama!');</script>";
 }
 
 ?>

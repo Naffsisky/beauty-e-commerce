@@ -84,7 +84,7 @@ function upload(){
     $namaFileBaru = uniqid();
     $namaFileBaru .= '.';
     $namaFileBaru .= $ekstensiGambar;
-    $destinationFile = './img/';
+    $destinationFile = '../profile/img/';
 
     move_uploaded_file($tmpName, $destinationFile . $namaFileBaru);
 
@@ -122,7 +122,7 @@ function ubah($data){
         $result = mysqli_query($conn, "SELECT gambar FROM produk WHERE id = $id");
         $file = mysqli_fetch_assoc($result);
         $fileName = implode('.', $file);
-        unlink('img/' . $fileName);
+        unlink('../profile/img/' . $fileName);
         $gambar = upload();
     }
 
@@ -159,28 +159,43 @@ function ubah_user($data){
     $passwordlama = htmlspecialchars($data["opassword"]);
     $passwordbaru = htmlspecialchars($data["npassword"]);
     $passwordbaru2 = htmlspecialchars($data["vpassword"]);
-     // Nama tidak boleh kosong
+    // Nama tidak boleh kosong
     if(empty($nama)){
         return "Nama tidak boleh kosong.";
     }
-    // periksa apakah password lama benar
     $result = mysqli_query($conn, "SELECT password FROM mimin WHERE id = $id");
     $row = mysqli_fetch_assoc($result);
-    if(password_verify($passwordlama, $row["password"])){
-        // periksa apakah password baru sama dengan password konfirmasi
+    $passwordDiDatabase = $row["password"];
+
+    $query = "UPDATE mimin SET
+        nama = '$nama',
+        domisili = '$domisili',
+        ponsel = '$ponsel',
+        tanggal_lahir = '$tanggal_lahir'";
+
+    // Periksa apakah password baru diisi
+    if(!empty($passwordbaru)){
+        // Periksa apakah password konfirmasi diisi
+        if(empty($passwordbaru2)){
+            return "Password konfirmasi tidak boleh kosong.";
+        }
+        // Periksa apakah password baru sama dengan password konfirmasi
         if($passwordbaru !== $passwordbaru2){
             return "Password baru tidak sama dengan password konfirmasi.";
         }
-        // periksa apakah password baru sama dengan password lama
+        // Periksa apakah password baru sama dengan password lama
         if($passwordbaru === $passwordlama){
             return "Password baru tidak boleh sama dengan password lama.";
         }
-        // enkripsi password baru
+        if(!password_verify($passwordlama, $passwordDiDatabase)){
+            return "Password lama tidak sesuai.";
+        }
+        // Enkripsi password baru
         $password = password_hash($passwordbaru, PASSWORD_DEFAULT);
-    } else {
-        return "Password lama salah.";
+        $query .= ", password = '$password'";
     }
-    // periksa apakah gambar diubah
+
+    // Periksa apakah gambar diubah
     if($_FILES['gambar']['error'] === 4){
         $gambar = $gambarLama;
     } else {
@@ -191,16 +206,11 @@ function ubah_user($data){
         }
         $file = mysqli_fetch_assoc($result);
         $fileName = implode('.', $file);
-        unlink('img/' . $fileName);
+        unlink('../profile/img/' . $fileName);
+        $query .= ", gambar = '$gambar'";
     }
-    $query = "UPDATE mimin SET
-        nama = '$nama',
-        domisili = '$domisili',
-        ponsel = '$ponsel',
-        tanggal_lahir = '$tanggal_lahir',
-        gambar = '$gambar',
-        password = '$password'
-    WHERE id = $id";
+
+    $query .= " WHERE id = $id";
 
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
