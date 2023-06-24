@@ -42,7 +42,7 @@ if (isset($_POST["change"])) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Beautyku | Profile</title>
+    <title>Beautyku | Settings</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -167,7 +167,7 @@ if (isset($_POST["change"])) {
               />
             </div>
             <div class="info">
-              <a href="#" class="d-block"><?= ucwords($user['nama']) ?></a>
+              <a href="../profile/" class="d-block"><?= ucwords($user['nama']) ?></a>
             </div>
           </div>
 
@@ -216,19 +216,19 @@ if (isset($_POST["change"])) {
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../order/" class="nav-link">
+                    <a href="../order/wait/" class="nav-link">
                       <i class="far fa-circle nav-icon text-danger"></i>
                       <p>Menunggu Konfirmasi</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../order/" class="nav-link">
+                    <a href="../order/proses/" class="nav-link">
                       <i class="far fa-circle nav-icon text-warning"></i>
                       <p>Pesanan di Proses</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../order/" class="nav-link">
+                    <a href="../order/done/" class="nav-link">
                       <i class="far fa-circle nav-icon text-success"></i>
                       <p>Pesanan Selesai</p>
                     </a>
@@ -240,7 +240,6 @@ if (isset($_POST["change"])) {
                   <i class="nav-icon fas fa-history"></i>
                   <p>
                     Riwayat Pesanan
-                    <span class="badge badge-info right">2</span>
                   </p>
                 </a>
               </li>
@@ -340,7 +339,7 @@ if (isset($_POST["change"])) {
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="../../">Home</a></li>
-                  <li class="breadcrumb-item active">Profile</li>
+                  <li class="breadcrumb-item active">Settings</li>
                 </ol>
               </div>
               <!-- /.col -->

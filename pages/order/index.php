@@ -343,7 +343,7 @@ if($user['gambar'] == NULL){
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content container">
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
@@ -356,7 +356,7 @@ if($user['gambar'] == NULL){
             </div>
             </div>
             <div class="card-body p-0">
-            <table class="table table-striped projects">
+            <table class="table table-striped projects table-responsive">
                 <thead>
                     <tr>
                         <th style="width: 1%" class="text-center">
@@ -432,7 +432,7 @@ if($user['gambar'] == NULL){
             </div>
             </div>
             <div class="card-body p-0">
-            <table class="table table-striped projects">
+            <table class="table table-striped projects table-responsive">
                 <thead>
                     <tr>
                         <th style="width: 1%" class="text-center">
@@ -510,7 +510,7 @@ if($user['gambar'] == NULL){
             </div>
             </div>
             <div class="card-body p-0">
-            <table class="table table-striped projects">
+            <table class="table table-striped projects table-responsive">
                 <thead>
                     <tr>
                         <th style="width: 1%" class="text-center">

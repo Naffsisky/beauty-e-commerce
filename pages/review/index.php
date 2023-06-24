@@ -230,19 +230,19 @@ a {
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../order/" class="nav-link">
+                    <a href="../order/wait/" class="nav-link">
                       <i class="far fa-circle nav-icon text-danger"></i>
                       <p>Menunggu Konfirmasi</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../order/" class="nav-link">
+                    <a href="../order/proses/" class="nav-link">
                       <i class="far fa-circle nav-icon text-warning"></i>
                       <p>Pesanan di Proses</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../order/" class="nav-link">
+                    <a href="../order/done/" class="nav-link">
                       <i class="far fa-circle nav-icon text-success"></i>
                       <p>Pesanan Selesai</p>
                     </a>
@@ -254,7 +254,6 @@ a {
                   <i class="nav-icon fas fa-history"></i>
                   <p>
                     Riwayat Pesanan
-                    <span class="badge badge-info right">2</span>
                   </p>
                 </a>
               </li>
@@ -329,7 +328,7 @@ a {
               </li>
               <li class="nav-header">LOGOUT</li>
               <li class="nav-item">
-                <a href="../login/logout.html">
+                <a href="../login/logout.html" class="nav-link">
                   <i class="nav-icon fas fa-sign-out-alt"></i>
                   <p>Keluar</p>
                 </a>

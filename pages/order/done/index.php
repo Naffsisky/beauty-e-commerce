@@ -11,7 +11,7 @@ if(isset($_SESSION['username'])){
 require '../functions.php';
 
 $user = query("SELECT * FROM mimin WHERE username = '$username'")[0];
-$produk = query("SELECT * FROM produk WHERE kategori = 'bodycare'");
+$produk = query("SELECT * FROM produk WHERE kategori = 'skincare'");
 
 if($user['gambar'] == NULL){
   $gambar = 'http://bootdey.com/img/Content/avatar/avatar1.png';
@@ -24,20 +24,20 @@ $sortText = 'Sort by';
 
 // Lakukan sorting berdasarkan nilai sort
 if ($sort === 'stok') {
-    $produk = query("SELECT * FROM produk WHERE kategori = 'bodycare' ORDER BY stok ASC");
+    $produk = query("SELECT * FROM produk WHERE kategori = 'skincare' ORDER BY stok ASC");
     $sortText = 'Sort by stok';
 } elseif ($sort === 'harga') {
-    $produk = query("SELECT * FROM produk WHERE kategori = 'bodycare' ORDER BY harga ASC");
+    $produk = query("SELECT * FROM produk WHERE kategori = 'skincare' ORDER BY harga ASC");
     $sortText = 'Sort by harga';
 }
 if(isset($_POST["cari"])){
-  $produk = cari_bodycare($_POST["keyword"]);
+  $produk = cari_skincare($_POST["keyword"]);
 }
 
 // melakukan tampilan awal saat tombol dengan name and id reset di tekan
 
-if(isset($_POST["reset"])){
-  $produk = query("SELECT * FROM produk WHERE kategori = 'bodycare'");
+if (isset($_POST["reset"])){
+  $produk = query("SELECT * FROM produk WHERE kategori = 'skincare'");
   $sortText = 'Sort by';
   $sort = '';
 }
@@ -48,7 +48,7 @@ if(isset($_POST["reset"])){
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Katalog | Bodycare</title>
+    <title>Order | Selesai</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link
@@ -185,7 +185,8 @@ if(isset($_POST["reset"])){
                     class="form-control form-control-navbar"
                     type="search"
                     placeholder="Search"
-                    aria-label="Search" name="keyword" id="keyword" autocomplete="off"
+                    aria-label="Search" name="keyword" id="keyword"
+                    autocomplete="off"
                   />
                   <div class="input-group-append">
                     <button class="btn btn-navbar" type="submit" name="cari" id="cari">
@@ -194,7 +195,7 @@ if(isset($_POST["reset"])){
                     <button
                       class="btn btn-navbar"
                       type="button"
-                      data-widget="navbar-search" 
+                      data-widget="navbar-search"
                       name="reset" id="reset"
                     >
                       <i class="fas fa-times"></i>
@@ -268,7 +269,7 @@ if(isset($_POST["reset"])){
               </li>
               <li class="nav-header">PESANAN</li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-shopping-cart"></i>
                   <p>
                     Pesanan Sekarang
@@ -277,19 +278,19 @@ if(isset($_POST["reset"])){
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../../order/wait/" class="nav-link">
+                    <a href="../wait/" class="nav-link">
                       <i class="far fa-circle nav-icon text-danger"></i>
                       <p>Menunggu Konfirmasi</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../../order/proses/" class="nav-link">
+                    <a href="../proses/" class="nav-link">
                       <i class="far fa-circle nav-icon text-warning"></i>
                       <p>Pesanan di Proses</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../../order/done/" class="nav-link">
+                    <a href="#" class="nav-link active">
                       <i class="far fa-circle nav-icon text-success"></i>
                       <p>Pesanan Selesai</p>
                     </a>
@@ -320,7 +321,7 @@ if(isset($_POST["reset"])){
               </li>
               <li class="nav-header">PENJUALAN</li>
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-book-open"></i>
                   <p>
                     Katalog
@@ -329,19 +330,19 @@ if(isset($_POST["reset"])){
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="../skincare/" class="nav-link">
+                    <a href="../../katalog/skincare/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Skincare</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link active">
+                    <a href="../../katalog/bodycare/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Bodycare</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="../makeup/" class="nav-link">
+                    <a href="../../katalog/makeup/" class="nav-link">
                       <i class="far fa-circle nav-icon text-pink"></i>
                       <p>Makeup</p>
                     </a>
@@ -394,13 +395,13 @@ if(isset($_POST["reset"])){
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1 class="m-0">Katalog Bodycare</h1>
+                <h1 class="m-0">Pesanan Selesai</h1>
               </div>
               <!-- /.col -->
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="../../../">Home</a></li>
-                  <li class="breadcrumb-item active">Bodycare</li>
+                  <li class="breadcrumb-item active">Pesanan Selesai</li>
                 </ol>
               </div>
               <!-- /.col -->
@@ -412,30 +413,130 @@ if(isset($_POST["reset"])){
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <div class="container" id="content">
-          <div class="dropdown">
-            <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <?php echo $sortText; ?>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="?sort=stok" data-sort="stok">Stok</a>
-              <a class="dropdown-item" href="?sort=harga" data-sort="harga">Harga</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="../bodycare/">Default</a>
+        <section class="content container">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+            <h3 class="card-title">Pesanan Dikirim</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+                </button>
             </div>
-          </div>
-          <div class="product-container">
-            <?php foreach ($produk as $row) : ?>
-            <div class="product-item">
-              <img class="product-image" src="../../produk/img/<?= $row["gambar"]; ?>" alt="Gambar Produk">   
-              <h3 class="product-name"><?= $row['nama']; ?></h3>
-              <p class="product-price">Rp<?= number_format($row['harga'], 0, ',', '.'); ?></p>
-              <h4 class="product-stock">Stok : <?= $row['stok']; ?></h4>
             </div>
-            <?php endforeach; ?>
-          </div>
+            <div class="card-body p-0">
+            <table class="table table-striped projects table-responsive">
+                <thead>
+                    <tr>
+                        <th style="width: 1%" class="text-center">
+                            No.
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                            Nama Produk
+                        </th>
+                        <th style="width: 10%" class="text-center">
+                            Jumlah
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                            Nama Penerima
+                        </th>
+                        <th style="width: 20%" class="text-center">
+                            Alamat
+                        </th>
+                        <th style="width: 8%" class="text-center">
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">
+                            1
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                Skintific - Serum
+                            </a>
+                            <br/>
+                            <small>
+                                Kategori : Skincare
+                            </small>
+                        </td>
+                        <td class="text-center">
+                            <a>1</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Yusuf</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Jl. Raya Bandung Timur No. 91</a>
+                        </td>
+                        <td class="project-state">
+                            <span class="badge badge-success">Dikirim</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            2
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                Skintific - Sunscreen
+                            </a>
+                            <br/>
+                            <small>
+                                Kategori : Skincare
+                            </small>
+                        </td>
+                        <td class="text-center">
+                            <a>1</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Yusuf</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Jl. Raya Bandung Timur No. 91</a>
+                        </td>
+                        <td class="project-state">
+                            <span class="badge badge-success">Dikirim</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            3
+                        </td>
+                        <td class="text-center">
+                            <a>
+                                Skintific - Toner
+                            </a>
+                            <br/>
+                            <small>
+                                Kategori : Skincare
+                            </small>
+                        </td>
+                        <td class="text-center">
+                            <a>1</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Yusuf</a>
+                        </td>
+                        <td class="text-center">
+                            <a>Jl. Raya Bandung Timur No. 91</a>
+                        </td>
+                        <td class="project-state">
+                            <span class="badge badge-success">Dikirim</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            <!-- /.card-body -->
         </div>
-        <br />
+        <!-- /.card -->
+
+    </section>
+    <br />
       </div>
       <!-- /.content-wrapper -->
       <footer class="main-footer">
